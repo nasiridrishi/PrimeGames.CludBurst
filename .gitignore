@@ -2,3 +2,5 @@
 /PlayerSync
 /Core/target
 /Kitpvp/target
+.idea
+.DS_Store
