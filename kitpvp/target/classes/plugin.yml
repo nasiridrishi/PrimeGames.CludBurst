@@ -1,7 +1,0 @@
-name: Kitpvp
-main: net.primegames.kitpvp.Kitpvp
-version: 0.0.1
-author: Nasir Idrishi
-api: [2.0.0]
-softdepend:
-  - Core
