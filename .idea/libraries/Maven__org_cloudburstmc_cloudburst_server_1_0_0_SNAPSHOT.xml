@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: org.cloudburstmc:cloudburst-server:1.0.0-SNAPSHOT">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/org/cloudburstmc/cloudburst-server/1.0.0-SNAPSHOT/cloudburst-server-1.0.0-20200824.185422-16.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/org/cloudburstmc/cloudburst-server/1.0.0-SNAPSHOT/cloudburst-server-1.0.0-20200824.185422-16-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/org/cloudburstmc/cloudburst-server/1.0.0-SNAPSHOT/cloudburst-server-1.0.0-20200824.185422-16-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

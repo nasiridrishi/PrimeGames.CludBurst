@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact name="async-mysql-connector-0_0_8">
+    <output-path>$PROJECT_DIR$/out/artifacts/async_mysql_connector_0_0_8</output-path>
+    <root id="root">
+      <element id="library" level="project" name="async-mysql-connector-0.0.8" />
+    </root>
+  </artifact>
+</component>

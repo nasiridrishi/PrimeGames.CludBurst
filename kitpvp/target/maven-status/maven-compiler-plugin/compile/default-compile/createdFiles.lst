@@ -1,0 +1,7 @@
+net/primegames/kitpvp/settings/Settings.class
+net/primegames/kitpvp/listener/KitpvpCustomPlayerListener.class
+net/primegames/kitpvp/KitpvpPlayer.class
+net/primegames/kitpvp/kit/ClassicKit.class
+net/primegames/kitpvp/listener/PlayerKitListener.class
+net/primegames/kitpvp/Kitpvp.class
+net/primegames/kitpvp/settings/presets/ClassicSettings.class

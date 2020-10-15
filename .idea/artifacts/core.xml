@@ -1,0 +1,26 @@
+<component name="ArtifactManager">
+  <artifact type="jar" build-on-make="true" name="core">
+    <output-path>$PROJECT_DIR$/../Desktop/PrimeGames/plugins</output-path>
+    <root id="archive" name="core.jar">
+      <element id="module-output" name="core" />
+      <element id="library" level="project" name="Cloudburst" />
+      <element id="library" level="project" name="Maven: classworlds:classworlds:1.1-alpha-2" />
+      <element id="library" level="project" name="Maven: junit:junit:3.8.1" />
+      <element id="library" level="project" name="Maven: org.apache.maven.plugins:maven-deploy-plugin:maven-plugin:2.7" />
+      <element id="library" level="project" name="Maven: org.apache.maven.wagon:wagon-provider-api:1.0-beta-2" />
+      <element id="library" level="project" name="Maven: org.apache.maven:maven-artifact-manager:2.0.6" />
+      <element id="library" level="project" name="Maven: org.apache.maven:maven-artifact:2.0.6" />
+      <element id="library" level="project" name="Maven: org.apache.maven:maven-model:2.0.6" />
+      <element id="library" level="project" name="Maven: org.apache.maven:maven-plugin-api:2.0.6" />
+      <element id="library" level="project" name="Maven: org.apache.maven:maven-plugin-registry:2.0.6" />
+      <element id="library" level="project" name="Maven: org.apache.maven:maven-profile:2.0.6" />
+      <element id="library" level="project" name="Maven: org.apache.maven:maven-project:2.0.6" />
+      <element id="library" level="project" name="Maven: org.apache.maven:maven-repository-metadata:2.0.6" />
+      <element id="library" level="project" name="Maven: org.apache.maven:maven-settings:2.0.6" />
+      <element id="library" level="project" name="Maven: org.codehaus.plexus:plexus-container-default:1.0-alpha-9-stable-1" />
+      <element id="library" level="project" name="Maven: org.codehaus.plexus:plexus-utils:1.5.6" />
+      <element id="jpa-descriptors" facet="core/jpa/JPA" />
+      <element id="artifact" artifact-name="async-mysql-connector-0_0_8" />
+    </root>
+  </artifact>
+</component>
