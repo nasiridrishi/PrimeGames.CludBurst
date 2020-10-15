@@ -12,11 +12,13 @@ import java.sql.SQLException;
 
 public class Core extends PluginBase {
 
-    private MySQLProvider mySQLProvider;
-
     private static Core instance;
-
+    private MySQLProvider mySQLProvider;
     private KitFactory kitFactory;
+
+    public static Core getInstance() {
+        return instance;
+    }
 
     @Override
     public void onEnable() {
@@ -42,20 +44,16 @@ public class Core extends PluginBase {
         }
     }
 
-    private void registerListeners(){
+    private void registerListeners() {
         getServer().getPluginManager().registerEvents(new CustomCorePlayerListener(), this);
         getServer().getPluginManager().registerEvents(new SessionListener(), this);
     }
 
-    public static Core getInstance(){
-        return instance;
-    }
-
-    public KitFactory getKitFactory(){
+    public KitFactory getKitFactory() {
         return this.kitFactory;
     }
 
-    public MySQLProvider getMySQLProvider(){
+    public MySQLProvider getMySQLProvider() {
         return mySQLProvider;
     }
 }

@@ -16,8 +16,6 @@ public class CorePlayer extends Player{
     public final String STATUS_REGISTER_PENDING = "status.registration_pending";
     public final String STATUS_ONLINE = "status.loaded";
     public final String STATUS_UPDATING = "status.updating";
-    //public final String STATUS_PLAYING = "status.playing";
-    //public final String STATUS_SPECTATING = "status.spectating";
 
     private Chat chat;
 
