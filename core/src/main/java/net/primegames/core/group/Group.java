@@ -9,6 +9,7 @@
 package net.primegames.core.group;
 
 import net.primegames.core.CorePlayer;
+import net.primegames.core.Utils.Utils;
 
 import java.util.ArrayList;
 import java.util.Objects;
@@ -32,8 +33,8 @@ public class Group {
         this.priorityLevel = priorityLevel;
         this.name = name;
         this.identifier = identifier;
-        this.chatFormat = chatFormat;
-        this.tagFormat = tagFormat;
+        this.chatFormat = Utils.translateColors(chatFormat);
+        this.tagFormat = Utils.translateColors(tagFormat);
         for (String permission: permissions){
             this.permissions.add(permission.toLowerCase());
         }
@@ -56,25 +57,23 @@ public class Group {
     }
 
     public String getChatFormatFor(CorePlayer player, String message){
-        String username = player.getName();
-
-        String format = chatFormat;
-        format = format.replace("{player}", username);
-        //todo format = format.replace("{clan}", player.getClan);
-        //todo formate clan rank
-        format = format.replace("{group}", this.name);
+        String format = forMateTag(player);
         format = format.replace("{message}", message);
         return format;
     }
 
     public String getTagFormatFor(CorePlayer player){
+        return forMateTag(player);
+    }
+
+    private String forMateTag(CorePlayer player){
         String username = player.getName();
 
         String format = chatFormat;
         format = format.replace("{player}", username);
-        //todo format = format.replace("{clan}", player.getClan);
-        //todo formate clan rank
         format = format.replace("{group}", this.name);
+        format = format.replace("{clan}", ""); //todo edit after implementing clan
+        format = format.replace("{clan_rank}", ""); //todo edit after implementing clan
         return format;
     }
 

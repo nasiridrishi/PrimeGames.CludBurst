@@ -9,12 +9,7 @@
     <remote-repository>
       <option name="id" value="org.async.jdbc" />
       <option name="name" value="org.async.jdbc" />
-      <option name="url" value="file://$PROJECT_DIR$/core/libs" />
-    </remote-repository>
-    <remote-repository>
-      <option name="id" value="org.async.jdbc" />
-      <option name="name" value="org.async.jdbc" />
-      <option name="url" value="file://$PROJECT_DIR$/core/src/libs" />
+      <option name="url" value="$PROJECT_DIR$/libs" />
     </remote-repository>
     <remote-repository>
       <option name="id" value="central" />
@@ -54,7 +49,12 @@
     <remote-repository>
       <option name="id" value="org.async.jdbc" />
       <option name="name" value="org.async.jdbc" />
-      <option name="url" value="$PROJECT_DIR$/libs" />
+      <option name="url" value="file://$PROJECT_DIR$/core/src/libs" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="org.async.jdbc" />
+      <option name="name" value="org.async.jdbc" />
+      <option name="url" value="file://$PROJECT_DIR$/core/libs" />
     </remote-repository>
   </component>
 </project>

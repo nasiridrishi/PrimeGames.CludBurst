@@ -16,7 +16,7 @@ import java.util.ArrayList;
 
 public class ChatFactory {
 
-    static private ArrayList<Chat>  chats;
+    static private ArrayList<Chat>  chats = new ArrayList<>();
 
     static public void init(){
         openChat(new MainChat());

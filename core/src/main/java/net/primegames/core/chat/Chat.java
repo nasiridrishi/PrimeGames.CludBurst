@@ -20,9 +20,9 @@ import java.util.UUID;
 
 public abstract class Chat {
 
-    private String id;
+    private final String id;
 
-    private String permission;
+    private final String permission;
 
     public Chat(String id, String permission){
         this.id = id;
@@ -37,20 +37,38 @@ public abstract class Chat {
         return permission;
     }
 
-//    public ArrayList<CorePlayer> getPlayers(){
-//        ArrayList<Player> players = new ArrayList<>();
-//        for (Map.Entry<UUID, Player> player:Core.getInstance().getServer().getOnlinePlayers().entrySet()){
-//            (CorePlayer)(player.getValue()).
-//        }
-////        private void setItems(Player player){
-////            Map<Integer, Item> entry = new HashMap<Integer, Item>();
-////            for (int i = 0; i < getItems().size(); i++){
-////                entry.put(i, getItems().get(i));
-////            }
-////            player.getInventory().setContents(entry);
-////        }
-//        Map<>
-//    }
+    public ArrayList<CorePlayer> getPlayers(){
+        ArrayList<CorePlayer> players = new ArrayList<>();
+        for (Map.Entry<UUID, Player> entry:Core.getInstance().getServer().getOnlinePlayers().entrySet()){
+            Player player = entry.getValue();
+            if(player instanceof CorePlayer){
+                CorePlayer player1 = (CorePlayer) player;
+                if(player1.getChat().getId().equals(this.id)){
+                    players.add(player1);
+                }
+            }
+        }
+        return players;
+    }
+
+    public void sendMessage(CorePlayer owner, String message, ArrayList<CorePlayer> corePlayers){
+        String finalMessage = "☛ " + owner.getHighestPriorityGroup().getChatFormatFor(owner, message);
+        for (CorePlayer player:corePlayers){
+            if(!player.isIgnored(owner)){
+                player.sendMessage(finalMessage);
+            }
+        }
+    }
+
+    public void sendMessage(CorePlayer owner, String message){
+        ArrayList<CorePlayer> corePlayers = getPlayers();
+        String finalMessage = "☛ " + owner.getHighestPriorityGroup().getChatFormatFor(owner, message);
+        for (CorePlayer player:corePlayers){
+            if(!player.isIgnored(owner)){
+                player.sendMessage(finalMessage);
+            }
+        }
+    }
 
     abstract public void onText(CorePlayer player, String $message);
 }

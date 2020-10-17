@@ -11,10 +11,12 @@ package net.primegames.core.providor.task.player;
 import net.primegames.core.Core;
 import net.primegames.core.CorePlayer;
 import net.primegames.core.Utils.LoggerUtils;
-import net.primegames.core.Utils.Utils;
+import net.primegames.core.event.player.CorePlayerLoadedEvent;
 import net.primegames.core.group.Group;
 import net.primegames.core.player.CorePlayerDatabaseData;
 import net.primegames.core.providor.MySqlFetchQueryTask;
+import org.cloudburstmc.server.Server;
+import org.cloudburstmc.server.event.Event;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -70,16 +72,22 @@ public class PlayerLoadTask extends MySqlFetchQueryTask {
                             resultSet.getInt("rare_keys"),
                             resultSet.getInt("legendary_keys"),
                             resultSet.getString("locale")
-
-                            //set groups
-
                     );
+                    //LoggerUtils.info(resultSet.getNString("all_groups"));
+                    String[] groupIds = resultSet.getString("all_groups").split(",");
+                    for (String groupdId: groupIds){
+                        Group group = Core.getInstance().getGroupManager().getGroup(Integer.parseInt(groupdId));
+                        if(group != null){
+                            player.addGroup(group);
+                        }
+                    }
                 } catch (SQLException exception) {
                     exception.printStackTrace();
                 }
                 if(playerDatabaseData != null){
                     player.setDatabaseData(playerDatabaseData);
-                    //todo played loaded event
+                    CorePlayerLoadedEvent event = new CorePlayerLoadedEvent(player);
+                    Core.getInstance().getServer().getPluginManager().callEvent(event);
                     LoggerUtils.debug("Successfully loaded data from " + player.getName());
                     player.setStatus(player.STATUS_ONLINE);
                 }

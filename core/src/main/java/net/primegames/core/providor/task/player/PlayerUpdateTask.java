@@ -35,31 +35,31 @@ public class PlayerUpdateTask extends MySQLPostQueryTask {
 
     @Override
     protected PreparedStatement preparedStatement(Connection connection) throws SQLException {
-        PreparedStatement statement = connection.prepareStatement("          UPDATE users SET" +
-                "            uuid = ?," +
-                "            username = ?," +
-                "            last_ip = ?," +
+        PreparedStatement statement = connection.prepareStatement("UPDATE users SET" +
+                "uuid = UUID_TO_BIN(?)," +
+                "username = ?," +
+                "last_ip = ?," +
 
-                "            reputation = ?," +
+                "reputation = ?," +
 
-                "            locale = ?," +
-                "            continent_code = ?," +
-                "            country_code = ?," +
+                "locale = ?," +
+                "continent_code = ?," +
+                "country_code = ?," +
 
-                "            common_keys = ?," +
-                "            vote_keys = ?," +
-                "            rare_keys = ?," +
-                "            legendary_keys = ?," +
+                "common_keys = ?," +
+                "vote_keys = ?," +
+                "rare_keys = ?," +
+                "legendary_keys = ?," +
 
-                "            time_played = ?," +
-                "            last_connection_duration = ?," +
+                "time_played = ?," +
+                "last_connection_duration = ?," +
 
-                "            warnings = ?," +
+                "warnings = ?," +
 
-                "            last_connection = CURRENT_TIMESTAMP" +
-                "            WHERE id = ?");
+                "last_connection = CURRENT_TIMESTAMP" +
+                "WHERE id = ?");
         CorePlayerDatabaseData db = player.getDatabaseData();
-        statement.setBytes(1, Utils.toBinary(uuid));
+        statement.setString(1, uuid.toString());
         statement.setString(2, username);
         statement.setString(3, ip);
         statement.setInt(4, db.getReputation());

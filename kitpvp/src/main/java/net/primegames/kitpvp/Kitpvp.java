@@ -5,6 +5,7 @@ import net.primegames.core.plugin.CorePlugin;
 import net.primegames.kitpvp.kit.ClassicKit;
 import net.primegames.kitpvp.listener.KitpvpCustomPlayerListener;
 import net.primegames.kitpvp.listener.PlayerKitListener;
+import net.primegames.kitpvp.listener.ProtectionListener;
 import net.primegames.kitpvp.settings.Settings;
 import net.primegames.kitpvp.settings.presets.ClassicSettings;
 
@@ -30,6 +31,7 @@ public class Kitpvp extends CorePlugin {
     private void registerListeners(){
         getServer().getPluginManager().registerEvents(new KitpvpCustomPlayerListener(), this);
         getServer().getPluginManager().registerEvents(new PlayerKitListener(), this);
+        getServer().getPluginManager().registerEvents(new ProtectionListener(), this);
     }
 
     private Settings getSettings(){

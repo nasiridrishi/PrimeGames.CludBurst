@@ -10,5 +10,7 @@ package net.primegames.core.group;
 
 public class Permissions {
     public static final String IS_STAFF = "staff";
+    public static final String COMMAND_KICK = "command.kick";
+    public static final String COMMAND_BAN = "command.ban";
 
 }

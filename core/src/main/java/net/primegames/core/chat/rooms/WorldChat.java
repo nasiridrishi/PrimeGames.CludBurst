@@ -9,6 +9,7 @@
 package net.primegames.core.chat.rooms;
 
 import net.primegames.core.CorePlayer;
+import net.primegames.core.Utils.ChatUtils;
 import net.primegames.core.chat.Chat;
 import net.primegames.core.chat.ChatId;
 
@@ -19,6 +20,8 @@ public class WorldChat extends Chat {
 
     @Override
     public void onText(CorePlayer player, String $message) {
-
+        if(ChatUtils.isSpam(player, $message)){
+            return;
+        }
     }
 }

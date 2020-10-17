@@ -3,11 +3,16 @@ package net.primegames.core;
 import com.nukkitx.protocol.bedrock.BedrockServerSession;
 import net.primegames.core.Utils.LoggerUtils;
 import net.primegames.core.chat.Chat;
+import net.primegames.core.chat.ChatFactory;
+import net.primegames.core.chat.ChatId;
 import net.primegames.core.group.Group;
+import net.primegames.core.group.GroupIds;
 import net.primegames.core.player.CorePlayerDatabaseData;
+import net.primegames.core.providor.task.player.punishment.MySQLPunishPlayerTask;
 import org.cloudburstmc.server.player.Player;
 import org.cloudburstmc.server.utils.ClientChainData;
 
+import java.sql.Date;
 import java.util.ArrayList;
 
 public class CorePlayer extends Player{
@@ -19,17 +24,21 @@ public class CorePlayer extends Player{
 
     private Chat chat;
 
+    private Boolean muted = false;
+
+    private ArrayList<CorePlayer> ignoredPlayers = new ArrayList<>();
+
 
     private String status = STATUS_LOADING;
 
     private CorePlayerDatabaseData databaseData;
 
-    private ArrayList<Group> groups;
+    private ArrayList<Group> groups = new ArrayList<>();
 
     public CorePlayer(BedrockServerSession session, ClientChainData chainData) {
         super(session, chainData);
-
-
+        addGroup(Core.getInstance().getGroupManager().getGroup(GroupIds.MORTAL));
+        chat = ChatFactory.getChat(ChatId.MAIN_CHAT);
     }
 
     public ArrayList<Group> getGroups(){
@@ -114,5 +123,54 @@ public class CorePlayer extends Player{
 
     public Boolean isLoaded(){
         return status.equals(STATUS_ONLINE);
+    }
+
+    public ArrayList<CorePlayer> getIgnoredPlayers() {
+        return ignoredPlayers;
+    }
+
+    public boolean isIgnored(CorePlayer player){
+        for(CorePlayer ignored:ignoredPlayers){
+            if(player.getName().equals(ignored.getName())){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public void setIgnoredPlayers(ArrayList<CorePlayer> ignoredPlayers) {
+        this.ignoredPlayers = ignoredPlayers;
+    }
+
+    public void unIgnorePlayer(CorePlayer player){
+        if(isIgnored(player)){
+            ignoredPlayers.remove(player);
+        }
+    }
+
+    public void ignorePlayer(CorePlayer player){
+        if(!isIgnored(player)){
+            ignoredPlayers.add(player);
+        }
+    }
+
+    public void sentence(String reason, String effector, Date expiration, int category){
+        Core.getInstance().getMySQLProvider().scheduleTask(new MySQLPunishPlayerTask(getName(), effector, reason, getServerId().toString(), expiration, getAddress(), category));
+    }
+
+    public void mute(){
+        muted = true;
+    }
+
+    public boolean isMuted(){
+        return muted;
+    }
+
+    public void unmute(){
+        muted = false;
+    }
+
+    public static CorePlayer cast(Player player){
+        return (CorePlayer)player;
     }
 }

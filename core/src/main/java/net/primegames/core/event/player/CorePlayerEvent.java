@@ -9,11 +9,10 @@
 package net.primegames.core.event.player;
 
 import net.primegames.core.CorePlayer;
-import net.primegames.core.event.CoreEvent;
 
 public class CorePlayerEvent extends CoreEvent {
 
-    private CorePlayer player;
+    private final CorePlayer player;
 
     public CorePlayerEvent(CorePlayer player){
         this.player = player;

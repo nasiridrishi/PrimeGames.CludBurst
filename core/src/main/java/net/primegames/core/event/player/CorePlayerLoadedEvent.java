@@ -8,5 +8,17 @@
 
 package net.primegames.core.event.player;
 
-public class CorePlayerLoadedEvent {
+import net.primegames.core.CorePlayer;
+import org.cloudburstmc.server.event.HandlerList;
+
+public class CorePlayerLoadedEvent extends CorePlayerEvent{
+    private static final HandlerList handlers = new HandlerList();
+
+    public static HandlerList getHandlers() {
+        return handlers;
+    }
+
+    public CorePlayerLoadedEvent(CorePlayer player) {
+        super(player);
+    }
 }

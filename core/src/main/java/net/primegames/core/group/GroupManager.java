@@ -11,6 +11,7 @@ package net.primegames.core.group;
 import net.primegames.core.Core;
 import net.primegames.core.Utils.LoggerUtils;
 import org.cloudburstmc.server.player.Player;
+import org.cloudburstmc.server.utils.TextFormat;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
