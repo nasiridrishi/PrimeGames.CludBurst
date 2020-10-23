@@ -19,8 +19,8 @@ public class MySqlConnectionBuilder{
     private Connection connection;
 
     public MySqlConnectionBuilder(){
-        Core.getInstance().saveDefaultConfig();
-        open(Core.getInstance().getConfig());
+        Core.getInstance().getDataDirectory().getFileName().getFileName().endsWith(".yml");
+//        open(Core.getInstance().getConfig());
     }
 
     protected void open(Config config) {

@@ -11,6 +11,7 @@ package net.primegames.core.command;
 import net.primegames.core.Core;
 import net.primegames.core.CorePlayer;
 import org.cloudburstmc.server.Server;
+import org.cloudburstmc.server.command.CommandExecutor;
 import org.cloudburstmc.server.command.CommandSender;
 import org.cloudburstmc.server.command.ConsoleCommandSender;
 import org.cloudburstmc.server.command.PluginCommand;
@@ -19,8 +20,8 @@ import org.cloudburstmc.server.player.Player;
 
 abstract public class CoreCommand extends PluginCommand<Core> {
 
-    public CoreCommand(CommandData data) {
-        super(Core.getInstance(), data);
+    public CoreCommand(CommandExecutor executor, CommandData data) {
+        super(Core.getInstance(),executor, data);
     }
 
     public CorePlayer getPlayerExact(String username){

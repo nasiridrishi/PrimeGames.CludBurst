@@ -9,9 +9,9 @@
 package net.primegames.core.kit;
 
 import net.primegames.core.Core;
-import org.cloudburstmc.server.item.Item;
-import org.cloudburstmc.server.item.ItemArmor;
-import org.cloudburstmc.server.item.ItemIds;
+import org.cloudburstmc.server.item.behavior.Item;
+import org.cloudburstmc.server.item.behavior.ItemArmor;
+import org.cloudburstmc.server.item.behavior.ItemIds;
 import org.cloudburstmc.server.item.enchantment.Enchantment;
 import org.cloudburstmc.server.player.Player;
 import org.cloudburstmc.server.potion.Effect;
@@ -47,7 +47,7 @@ public abstract class Kit {
     }
 
     private void setItems(Player player){
-        Map<Integer, Item> entry = new HashMap<Integer, Item>();
+        Map<Integer, Item> entry = new HashMap<>();
         for (int i = 0; i < getItems().size(); i++){
             entry.put(i, getItems().get(i));
         }
@@ -77,7 +77,7 @@ public abstract class Kit {
     }
 
     protected ArrayList<Item> prepareItems(ArrayList<KitItem> kitItems){
-        ArrayList<Item> items = new ArrayList<Item>();
+        ArrayList<Item> items = new ArrayList<>();
         for(KitItem kitItem:kitItems){
             items.add(kitItem.getItem());
         }
@@ -85,12 +85,12 @@ public abstract class Kit {
     }
 
     protected ArrayList<Item> getDiamondArmor() {
-        Map<Identifier, Integer> itemsIds = new HashMap<Identifier, Integer>();
+        Map<Identifier, Integer> itemsIds = new HashMap<>();
         itemsIds.put(ItemIds.DIAMOND_HELMET, 0);
         itemsIds.put(ItemIds.DIAMOND_CHESTPLATE, 0);
         itemsIds.put(ItemIds.DIAMOND_LEGGINGS, 0);
         itemsIds.put(ItemIds.DIAMOND_BOOTS, 0);
-        ArrayList<Item> items = new ArrayList<Item>();
+        ArrayList<Item> items = new ArrayList<>();
         for (Map.Entry<Identifier, Integer> item: itemsIds.entrySet()){
             items.add(Item.get(item.getKey(), item.getValue()));
         }

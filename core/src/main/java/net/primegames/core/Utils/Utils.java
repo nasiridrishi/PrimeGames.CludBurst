@@ -8,24 +8,11 @@
 
 package net.primegames.core.Utils;
 
-import com.nukkitx.protocol.bedrock.compat.NoopBedrockPacketHelper;
-import io.netty.buffer.ByteBuf;
-import io.netty.buffer.Unpooled;
-import net.primegames.core.CorePlayer;
-import net.primegames.core.group.Permissions;
-import net.primegames.core.providor.task.player.punishment.PunishmentCategory;
-import org.cloudburstmc.server.Server;
-import org.cloudburstmc.server.command.CommandSender;
-import org.cloudburstmc.server.command.ConsoleCommandSender;
-import org.cloudburstmc.server.player.Player;
+
 import org.cloudburstmc.server.utils.TextFormat;
 
-import java.nio.ByteBuffer;
-import java.nio.ByteOrder;
 import java.sql.Date;
-import java.util.Arrays;
 import java.util.Calendar;
-import java.util.UUID;
 
 public class Utils {
 
@@ -89,46 +76,6 @@ public class Utils {
         c.setTime(date);
         c.add(Calendar.DATE, days);
         return new Date(c.getTimeInMillis());
-    }
-
-    public static boolean addSentence(CommandSender sender, String[] args, String usage, int type){
-        if(args.length < 1){
-            LoggerUtils.info("called" + args.length);
-            sender.sendMessage(usage);
-            return false;
-        }
-        Player player = Server.getInstance().getPlayer(args[0]);
-        if(player == null){
-            sender.sendMessage("Player is not online");
-            //todo ban offline player
-            return false;
-        }
-        Date time = null;
-        if(args.length  > 1){
-            int days = 0;
-            try {
-                days = Integer.parseInt(args[1]);
-            } catch (final NumberFormatException e) {
-                sender.sendMessage("time must be in integers ");
-                return false;
-            }
-            time = Utils.addDays(new Date(System.currentTimeMillis()), days);
-        }
-        String reason = "";
-        if(args.length > 2){
-            reason = Arrays.toString((Arrays.copyOfRange(args, 2, args.length)));
-        }
-        CorePlayer target = CorePlayer.cast(player);
-        target.sentence(reason, sender.getName(), time, type);
-        String banType = "";
-        if(type == PunishmentCategory.MUTE){
-            banType = "muted";
-        }
-        if(type == PunishmentCategory.BAN){
-            banType = "banned";
-        }
-        sender.sendMessage("Successfully "+ banType + "  player "+ target.getName());
-        return true;
     }
 
 }

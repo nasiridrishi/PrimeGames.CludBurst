@@ -19,6 +19,6 @@ public class ClassicSettings extends Settings {
 
     @Override
     protected Vector3f getSpawnPoint() {
-        return Vector3f.from(18.5, 65, 7.7);
+        return Vector3f.from(-18.5, 108, -11.5);
     }
 }

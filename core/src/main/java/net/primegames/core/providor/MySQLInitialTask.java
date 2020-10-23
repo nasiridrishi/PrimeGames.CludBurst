@@ -21,19 +21,13 @@ abstract public class MySQLInitialTask extends MySqlTask {
 
     @Override
     public void onRun() {
-        Statement statement = null;
+        Statement statement;
         try {
             statement = getConnection().createStatement();
             getInitTableQuery(statement);
         }catch (SQLException exception){
             LoggerUtils.error("Failed to initialize database tables");
             exception.getStackTrace();
-        }finally {
-            try {
-                statement.close();
-            } catch (SQLException exception) {
-                exception.printStackTrace();
-            }
         }
     }
 }

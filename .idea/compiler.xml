@@ -7,12 +7,17 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="kitpvp" />
-        <module name="core" />
+        <module name="Factions" />
+        <module name="survival" />
+        <module name="SkyBlock" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel target="15">
       <module name="core" target="1.8" />
+      <module name="Factions" target="1.8" />
       <module name="kitpvp" target="1.8" />
+      <module name="SkyBlock" target="1.8" />
+      <module name="survival" target="1.8" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">

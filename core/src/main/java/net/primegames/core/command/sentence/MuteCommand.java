@@ -18,20 +18,20 @@ import org.cloudburstmc.server.command.ConsoleCommandSender;
 import org.cloudburstmc.server.command.data.CommandData;
 
 
-public class MuteCommand extends CoreCommand {
-    public MuteCommand() {
-        super(CommandData.builder("mute")
-                .setUsageMessage("/mute <player> <time in days> <reason>")
-                .build());
-    }
-
-    @Override
-    public boolean execute(CommandSender sender, String commandLabel, String[] args) {
-        if(!(sender instanceof ConsoleCommandSender)){
-            if(checkPermission((CorePlayer) sender, Permissions.COMMAND_BAN)){
-                return false;
-            }
-        }
-        return Utils.addSentence(sender, args, getUsage(), PunishmentCategory.MUTE);
-    }
+public class MuteCommand extends SentenceCommand {
+//    public MuteCommand() {
+//        super(CommandData.builder("mute")
+//                .setUsageMessage("/mute <player> <time in days> <reason>")
+//                .build());
+//    }
+//
+//    @Override
+//    public boolean execute(CommandSender sender, String commandLabel, String[] args) {
+//        if(!(sender instanceof ConsoleCommandSender)){
+//            if(checkPermission((CorePlayer) sender, Permissions.COMMAND_BAN)){
+//                return false;
+//            }
+//        }
+//        return addSentence(sender, args, getUsage(), PunishmentCategory.MUTE);
+//    }
 }

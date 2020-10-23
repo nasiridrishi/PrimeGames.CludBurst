@@ -10,18 +10,16 @@ package net.primegames.core.listener;
 
 import net.primegames.core.Core;
 import net.primegames.core.CorePlayer;
-import net.primegames.core.event.player.CorePlayerLoadedEvent;
+import net.primegames.core.Utils.LoggerUtils;
 import net.primegames.core.providor.task.player.PlayerLoadTask;
-import org.cloudburstmc.server.event.EventHandler;
-import org.cloudburstmc.server.event.EventPriority;
 import org.cloudburstmc.server.event.Listener;
 import org.cloudburstmc.server.event.player.PlayerLoginEvent;
 
-public class SessionListener implements Listener {
+public class SessionListener {
 
-    @EventHandler(priority = EventPriority.NORMAL, ignoreCancelled = true)
+    @Listener
     public void onPlayerPreLogin(PlayerLoginEvent event){
         Core.getInstance().getMySQLProvider().scheduleTask(new PlayerLoadTask((CorePlayer)event.getPlayer()));
-
+        LoggerUtils.info("Logged in");
     }
 }

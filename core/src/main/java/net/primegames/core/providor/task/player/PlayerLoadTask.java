@@ -87,7 +87,7 @@ public class PlayerLoadTask extends MySqlFetchQueryTask {
                 if(playerDatabaseData != null){
                     player.setDatabaseData(playerDatabaseData);
                     CorePlayerLoadedEvent event = new CorePlayerLoadedEvent(player);
-                    Core.getInstance().getServer().getPluginManager().callEvent(event);
+                    //todo Core.getInstance().getServer().getPluginManager().callEvent(event);
                     LoggerUtils.debug("Successfully loaded data from " + player.getName());
                     player.setStatus(player.STATUS_ONLINE);
                 }

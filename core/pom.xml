@@ -5,7 +5,8 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>net.primegames</groupId>
     <artifactId>core</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+    <version>0.0.1-SNAPSHOT</version>
     <build>
         <finalName>${project.name}-${project.version}</finalName>
         <defaultGoal>clean install</defaultGoal>
@@ -28,7 +29,7 @@
                         </goals>
                         <configuration>
                             <shadedArtifactAttached>true</shadedArtifactAttached>
-                            <outputDirectory>/Users/nasir/Desktop/PrimeGames/plugins</outputDirectory>
+                            <outputDirectory>/Users/nasiridrishi/Desktop/PrimeGames.CB/CB Server/plugins</outputDirectory>
                         </configuration>
                     </execution>
                 </executions>
@@ -45,7 +46,7 @@
         <dependency>
             <groupId>org.cloudburstmc</groupId>
             <artifactId>cloudburst-server</artifactId>
-            <version>1.0.0-SNAPSHOT</version>
+            <version>0.0.1-SNAPSHOT</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
