@@ -13,5 +13,5 @@ import org.cloudburstmc.server.command.CommandSender;
 import org.cloudburstmc.server.command.data.CommandData;
 
 public class SuperBanCommand  {
-
+    //todo
 }

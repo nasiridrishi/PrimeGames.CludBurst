@@ -19,8 +19,7 @@ public class MySqlConnectionBuilder{
     private Connection connection;
 
     public MySqlConnectionBuilder(){
-        Core.getInstance().getDataDirectory().getFileName().getFileName().endsWith(".yml");
-//        open(Core.getInstance().getConfig());
+        open(Core.getInstance().getCorePlugin().getDefaultConfig());
     }
 
     protected void open(Config config) {

@@ -20,36 +20,34 @@ import org.cloudburstmc.server.utils.TextFormat;
 
 import java.util.Arrays;
 
-public class KickCommand{
+public class KickCommand extends CoreCommand{
 
-//    public KickCommand() {
-//        super(CommandData.builder("kick").build());
-//    }
-//
-//    @Override
-//    public boolean execute(CommandSender sender, String commandLabel, String[] args) {
-//        if(!(sender instanceof ConsoleCommandSender)){
-//            if(checkPermission((CorePlayer) sender, Permissions.COMMAND_KICK)){
-//                return false;
-//            }
-//        }
-//        if(args.length < 1){
-//            sender.sendMessage(getUsage());
-//            return false;
-//        }
-//        Player target = Server.getInstance().getPlayer(args[0]);
-//        if(target == null){
-//            sender.sendMessage(TextFormat.RED + "Player is not online");
-//            return false;
-//        }
-//        String reason = "Undefined reason";
-//        if(args.length > 1){
-//            String[] reasonArgs = Arrays.copyOfRange(args, 1, args.length);
-//            reason = Arrays.toString(reasonArgs);
-//        }
-//        target.kick(sender.getName() + " kicked you for " + reason);
-//        return true;
-//    }
+    public KickCommand() {
+        super(CommandData.builder("kick").build());
+    }
 
-
+    @Override
+    public boolean execute(CommandSender sender, String commandLabel, String[] args) {
+        if(!(sender instanceof ConsoleCommandSender)){
+            if(checkPermission((CorePlayer) sender, Permissions.COMMAND_KICK)){
+                return false;
+            }
+        }
+        if(args.length < 1){
+            sender.sendMessage(getUsage());
+            return false;
+        }
+        Player target = Server.getInstance().getPlayer(args[0]);
+        if(target == null){
+            sender.sendMessage(TextFormat.RED + "Player is not online");
+            return false;
+        }
+        String reason = "Undefined reason";
+        if(args.length > 1){
+            String[] reasonArgs = Arrays.copyOfRange(args, 1, args.length);
+            reason = Arrays.toString(reasonArgs);
+        }
+        target.kick(sender.getName() + " kicked you for " + reason);
+        return true;
+    }
 }

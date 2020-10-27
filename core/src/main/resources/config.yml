@@ -1,7 +1,0 @@
-#Mysql database settings
-mysql:
-  username: primer
-  password: primer
-  database: primer
-  host: 127.0.0.1
-  port: 3306

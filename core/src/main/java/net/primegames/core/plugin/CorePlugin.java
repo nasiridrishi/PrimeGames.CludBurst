@@ -9,8 +9,13 @@
 package net.primegames.core.plugin;
 
 
+import net.primegames.core.Utils.Config;
+import net.primegames.core.Utils.LoggerUtils;
 import org.checkerframework.checker.nullness.qual.NonNull;
 import org.cloudburstmc.server.Server;
+import org.cloudburstmc.server.event.EventManager;
+import org.cloudburstmc.server.event.server.ServerInitializationEvent;
+import org.cloudburstmc.server.event.server.ServerStartEvent;
 import org.cloudburstmc.server.plugin.PluginContainer;
 import org.cloudburstmc.server.plugin.PluginDescription;
 import org.slf4j.Logger;
@@ -23,11 +28,14 @@ public abstract class CorePlugin implements PluginContainer {
     private final Path dataFolder;
     private final Server server;
 
+    private final Config defaultConfig;
+
     public CorePlugin(Logger logger, PluginDescription description, Path dataFolder, Server server) {
         this.logger = logger;
         this.description = description;
         this.dataFolder = dataFolder;
         this.server = server;
+        defaultConfig = new Config(dataFolder);
     }
 
     public Server getServer() {
@@ -56,5 +64,21 @@ public abstract class CorePlugin implements PluginContainer {
     @NonNull
     public Path getDataDirectory() {
         return dataFolder;
+    }
+
+    public Config getDefaultConfig() {
+        return defaultConfig;
+    }
+
+    public EventManager getEventManager(){
+        return server.getEventManager();
+    }
+
+
+    public void onInitialization(ServerInitializationEvent event) {
+
+    }
+
+    public void onStart(ServerStartEvent event) {
     }
 }

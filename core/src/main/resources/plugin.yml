@@ -1,4 +1,0 @@
-name: core
-version: 0.0.1
-main: net.primegames.core.Core
-api: ["2.0.0"]

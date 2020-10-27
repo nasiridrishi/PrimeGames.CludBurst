@@ -13,25 +13,26 @@ import net.primegames.core.Utils.Utils;
 import net.primegames.core.command.CoreCommand;
 import net.primegames.core.group.Permissions;
 import net.primegames.core.providor.task.player.punishment.PunishmentCategory;
+import org.cloudburstmc.server.command.Command;
 import org.cloudburstmc.server.command.CommandSender;
 import org.cloudburstmc.server.command.ConsoleCommandSender;
 import org.cloudburstmc.server.command.data.CommandData;
 
 
 public class MuteCommand extends SentenceCommand {
-//    public MuteCommand() {
-//        super(CommandData.builder("mute")
-//                .setUsageMessage("/mute <player> <time in days> <reason>")
-//                .build());
-//    }
-//
-//    @Override
-//    public boolean execute(CommandSender sender, String commandLabel, String[] args) {
-//        if(!(sender instanceof ConsoleCommandSender)){
-//            if(checkPermission((CorePlayer) sender, Permissions.COMMAND_BAN)){
-//                return false;
-//            }
-//        }
-//        return addSentence(sender, args, getUsage(), PunishmentCategory.MUTE);
-//    }
+
+    public MuteCommand() {
+        super(CommandData.builder("kick").build());
+    }
+
+    @Override
+    public boolean execute(CommandSender sender, String commandLabel, String[] args) {
+        if (!(sender instanceof ConsoleCommandSender)) {
+            if (checkPermission((CorePlayer) sender, Permissions.COMMAND_BAN)) {
+                return false;
+            }
+        }
+        return addSentence(sender, args, getUsage(), PunishmentCategory.MUTE);
+    }
+
 }

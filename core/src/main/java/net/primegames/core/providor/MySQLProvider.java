@@ -17,26 +17,17 @@ import java.sql.Statement;
 
 public class MySQLProvider{
 
-    private Connection connection;
+    private final Connection connection;
 
     public MySQLProvider(){
-        initConnection();
+        connection = (new MySqlConnectionBuilder()).getConnection();
     }
 
     public void scheduleTask(MySqlTask mySqlTask) {
-        Core.getInstance().getServer().getScheduler().scheduleAsyncTask(Core.getInstance(), mySqlTask);
-    }
-
-    public void initConnection(){
-        connection = (new MySqlConnectionBuilder()).getConnection();
+        Core.getInstance().getServer().getScheduler().scheduleAsyncTask(Core.getInstance().getCorePlugin(), mySqlTask);
     }
 
     public Connection getConnection(){
         return connection;
     }
-
-    public Statement getStatementExecutor() throws SQLException {
-        return connection.createStatement();
-    }
-
 }

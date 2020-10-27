@@ -14,6 +14,7 @@ public abstract class Settings {
         plugin.getServer().setDefaultLevel(lobby);
         lobby.setAutoSave(false);
         lobby.setRaining(false);
+        lobby.setSpawnLocation(getSpawnPoint());
         lobby.stopTime();
 
     }

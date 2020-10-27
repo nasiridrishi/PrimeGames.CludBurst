@@ -8,7 +8,6 @@
 
 package net.primegames.core.kit;
 
-import net.primegames.core.Core;
 import org.cloudburstmc.server.item.behavior.Item;
 import org.cloudburstmc.server.item.behavior.ItemArmor;
 import org.cloudburstmc.server.item.behavior.ItemIds;
@@ -42,7 +41,7 @@ public abstract class Kit {
         if(getEffects() != null){
             addEffects(player);
         }
-        Core.getInstance().getLogger().info(this.getId() + " kit given to " + player.getName());
+        //Core.getInstance().getLogger().info(this.getId() + " kit given to " + player.getName());
         player.sendMessage("Added kit " + this.id);
     }
 

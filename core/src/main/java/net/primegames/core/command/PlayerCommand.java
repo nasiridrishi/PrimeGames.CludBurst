@@ -14,28 +14,28 @@ import org.cloudburstmc.server.command.data.CommandData;
 import org.cloudburstmc.server.player.Player;
 import org.cloudburstmc.server.utils.TextFormat;
 
-public abstract class PlayerCommand {
-//
-//    public PlayerCommand(String name, CommandData data) {
-//        super(name, data);
-//    }
-//
-//    @Override
-//    public boolean execute(CommandSender sender, String commandLabel, String[] args) {
-//        if(!(sender instanceof CorePlayer)){
-//            return false;
-//        }
-//        CorePlayer player = CorePlayer.cast((Player) sender);
-//        if(getGroupPermission() == null || player.hasGroupPermission(getGroupPermission())){
-//            onCommand((CorePlayer) sender, args);
-//            return true;
-//        }else{
-//         player.sendMessage(TextFormat.RED.toString() + "Not enough permission");
-//        }
-//        return false;
-//    }
-//
-//    abstract public void onCommand(CorePlayer player, String[] args);
-//
-//    abstract public String getGroupPermission();
+public abstract class PlayerCommand extends CoreCommand{
+
+    public PlayerCommand(CommandData data) {
+        super(data);
+    }
+
+    @Override
+    public boolean execute(CommandSender sender, String commandLabel, String[] args) {
+        if(!(sender instanceof CorePlayer)){
+            return false;
+        }
+        CorePlayer player = CorePlayer.cast((Player) sender);
+        if(getGroupPermission() == null || player.hasGroupPermission(getGroupPermission())){
+            onCommand((CorePlayer) sender, args);
+            return true;
+        }else{
+            player.sendMessage(TextFormat.RED.toString() + "Not enough permission");
+        }
+        return false;
+    }
+
+    abstract public void onCommand(CorePlayer player, String[] args);
+
+    abstract public String getGroupPermission();
 }

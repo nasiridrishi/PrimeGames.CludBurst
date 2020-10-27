@@ -17,32 +17,32 @@ import java.util.Calendar;
 public class Utils {
 
     // Colors
-    private static String AQUA = "{AQUA}";
-    private  static String BLACK = "{BLACK}";
-    private  static String BLUE = "{BLUE}";
-    private  static String DARK_AQUA = "{DARK_AQUA}";
-    private  static String DARK_BLUE = "{DARK_BLUE}";
-    private  static String DARK_GRAY = "{DARK_GRAY}";
-    private  static String DARK_GREEN = "{DARK_GREEN}";
-    private  static String DARK_RED = "{DARK_RED}";
-    private  static String DARK_PURPLE = "{DARK_PURPLE}";
-    private  static String GOLD = "{GOLD}";
-    private  static String GRAY = "{GRAY}";
-    private  static String GREEN = "{GREEN}";
-    private  static String LIGHT_PURPLE = "{LIGHT_PURPLE}";
-    private  static String ORANGE = "{ORANGE}";
-    private  static String PINK = "{LIGHT_PURPLE}";
-    private  static String RED = "{RED}";
-    private  static String WHITE = "{WHITE}";
-    private  static String YELLOW = "{YELLOW}";
+    private static final String AQUA = "{AQUA}";
+    private  static final String BLACK = "{BLACK}";
+    private  static final String BLUE = "{BLUE}";
+    private  static final String DARK_AQUA = "{DARK_AQUA}";
+    private  static final String DARK_BLUE = "{DARK_BLUE}";
+    private  static final String DARK_GRAY = "{DARK_GRAY}";
+    private  static final String DARK_GREEN = "{DARK_GREEN}";
+    private  static final String DARK_RED = "{DARK_RED}";
+    private  static final String DARK_PURPLE = "{DARK_PURPLE}";
+    private  static final String GOLD = "{GOLD}";
+    private  static final String GRAY = "{GRAY}";
+    private  static final String GREEN = "{GREEN}";
+    private  static final String LIGHT_PURPLE = "{LIGHT_PURPLE}";
+    private  static final String ORANGE = "{ORANGE}";
+    private  static final String PINK = "{LIGHT_PURPLE}";
+    private  static final String RED = "{RED}";
+    private  static final String WHITE = "{WHITE}";
+    private  static final String YELLOW = "{YELLOW}";
 
     // Formatting
-    private  static String BOLD = "{BOLD}";
-    private  static String OBFUSCATED = "{OBFUSCATED}";
-    private  static String STRIKETHROUGH = "{STRIKETHROUGH}";
-    private  static String UNDERLINE = "{UNDERLINE}";
-    private  static String ITALIC = "{ITALIC}";
-    private  static String RESET = "{RESET}";
+    private  static final String BOLD = "{BOLD}";
+    private  static final String OBFUSCATED = "{OBFUSCATED}";
+    private  static final String STRIKETHROUGH = "{STRIKETHROUGH}";
+    private  static final String UNDERLINE = "{UNDERLINE}";
+    private  static final String ITALIC = "{ITALIC}";
+    private  static final String RESET = "{RESET}";
 
     public static String translateColors(String message){
         message = message.replace(BLACK, TextFormat.BLACK.toString());

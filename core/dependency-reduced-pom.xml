@@ -3,7 +3,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>net.primegames</groupId>
   <artifactId>core</artifactId>
-  <version>1.0-SNAPSHOT</version>
+  <version>0.0.1-SNAPSHOT</version>
   <build>
     <defaultGoal>clean install</defaultGoal>
     <resources>
@@ -23,9 +23,6 @@
             <goals>
               <goal>shade</goal>
             </goals>
-            <configuration>
-              <outputDirectory>/Users/nasir/Desktop/PrimeGames/plugins</outputDirectory>
-            </configuration>
           </execution>
         </executions>
       </plugin>
@@ -33,44 +30,23 @@
   </build>
   <repositories>
     <repository>
-      <snapshots />
-      <id>spring-snapshots</id>
-      <url>http://repo.spring.io/snapshot</url>
-    </repository>
-    <repository>
-      <id>spring-milestones</id>
-      <url>http://repo.spring.io/milestone</url>
-    </repository>
-    <repository>
       <id>nukkit-repo</id>
       <url>https://repo.nukkitx.com/maven-snapshots</url>
     </repository>
-    <repository>
-      <id>jitpack.io</id>
-      <url>https://jitpack.io</url>
-    </repository>
   </repositories>
-  <pluginRepositories>
-    <pluginRepository>
-      <id>spring-snapshots</id>
-      <url>http://repo.spring.io/snapshot</url>
-    </pluginRepository>
-    <pluginRepository>
-      <id>spring-milestones</id>
-      <url>http://repo.spring.io/milestone</url>
-    </pluginRepository>
-  </pluginRepositories>
   <dependencies>
     <dependency>
       <groupId>org.cloudburstmc</groupId>
       <artifactId>cloudburst-server</artifactId>
-      <version>1.0.0-SNAPSHOT</version>
+      <version>0.0.1-SNAPSHOT</version>
       <scope>provided</scope>
     </dependency>
   </dependencies>
   <properties>
     <maven.compiler.target>1.8</maven.compiler.target>
     <maven.compiler.source>1.8</maven.compiler.source>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
   </properties>
 </project>
 

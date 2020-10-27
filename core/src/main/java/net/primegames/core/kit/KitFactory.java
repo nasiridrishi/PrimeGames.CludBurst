@@ -14,13 +14,22 @@ import java.util.ArrayList;
 
 public class KitFactory {
 
-    private static final ArrayList<Kit> kits = new ArrayList<Kit>();
+    private static final ArrayList<Kit> kits = new ArrayList();
+    private static KitFactory instance;
+
+    public KitFactory(){
+        instance = this;
+    }
 
     public static ArrayList<Kit> getKits(){
         if(kits.isEmpty()){
             return null;
         }
         return kits;
+    }
+
+    public static KitFactory getInstance() {
+        return instance;
     }
 
     public void registerKit(Kit kit){

@@ -10,8 +10,8 @@ package net.primegames.kitpvp.kit;
 
 import net.primegames.core.kit.Kit;
 import net.primegames.core.kit.KitIds;
-import org.cloudburstmc.server.item.Item;
-import org.cloudburstmc.server.item.ItemIds;
+import org.cloudburstmc.server.item.behavior.Item;
+import org.cloudburstmc.server.item.behavior.ItemIds;
 import org.cloudburstmc.server.player.Player;
 import org.cloudburstmc.server.potion.Effect;
 import org.cloudburstmc.server.potion.Potion;
@@ -38,7 +38,7 @@ public class ClassicKit extends Kit {
     }
 
     public ArrayList<Item> getItems() {
-        ArrayList<Item> items = new ArrayList<Item>();
+        ArrayList<Item> items = new ArrayList<>();
         items.add(prepareKitItem(ItemIds.DIAMOND_SWORD, 0, 1));
         items.add(prepareKitItem(ItemIds.ENDER_PEARL, 0, 5));
         items.add(prepareKitItem(ItemIds.BOW, 0, 1));

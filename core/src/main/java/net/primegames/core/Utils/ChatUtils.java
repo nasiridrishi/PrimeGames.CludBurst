@@ -18,7 +18,7 @@ public class ChatUtils {
             player.sendMessage(TextFormat.RED.toString() + "You are muted");
             return true;
         }
-        //todo add more stuffs here
+        //todo add more stuffs here like spam filter etc.
         return false;
     }
 }
