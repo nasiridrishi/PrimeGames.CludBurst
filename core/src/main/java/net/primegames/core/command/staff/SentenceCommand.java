@@ -6,7 +6,7 @@
  *
  */
 
-package net.primegames.core.command.sentence;
+package net.primegames.core.command.staff;
 
 import net.primegames.core.CorePlayer;
 import net.primegames.core.Utils.LoggerUtils;
