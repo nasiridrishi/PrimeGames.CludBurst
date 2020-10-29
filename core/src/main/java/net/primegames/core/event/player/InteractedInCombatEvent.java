@@ -9,18 +9,18 @@
 package net.primegames.core.event.player;
 
 import net.primegames.core.CorePlayer;
-import org.cloudburstmc.server.event.Event;
+import org.cloudburstmc.server.event.Cancellable;
 
 public class InteractedInCombatEvent extends CorePlayerEvent{
 
-    private final Event event;
+    private final Cancellable event;
 
-    public InteractedInCombatEvent(CorePlayer player, Event event) {
+    public InteractedInCombatEvent(CorePlayer player, Cancellable event) {
         super(player);
         this.event = event;
     }
 
-    public Event getEvent() {
+    public Cancellable getEvent() {
         return event;
     }
 }

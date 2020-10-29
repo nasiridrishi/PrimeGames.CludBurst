@@ -58,6 +58,8 @@ public class HeartBeat {
     public void stopBeat(){
         if(task != null){
             Core.getInstance().getServer().getScheduler().cancelTask(task.getTaskId());
+            task = null;
+            scheduler = null;
         }
     }
 }

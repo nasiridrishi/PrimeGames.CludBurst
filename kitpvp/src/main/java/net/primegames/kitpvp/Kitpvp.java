@@ -5,6 +5,7 @@ import net.primegames.core.Core;
 import net.primegames.core.Utils.LoggerUtils;
 import net.primegames.core.component.ComponentManager;
 import net.primegames.core.component.combatLogger.CombatLoggerComponent;
+import net.primegames.core.component.combatLogger.KitPvPCombatLoggerListener;
 import net.primegames.core.kit.KitFactory;
 import net.primegames.core.plugin.CorePlugin;
 import net.primegames.kitpvp.kit.ClassicKit;
@@ -85,6 +86,7 @@ public class Kitpvp extends CorePlugin {
         getEventManager().registerListeners(this, new KitpvpCustomPlayerListener());
         getEventManager().registerListeners(this, new PlayerKitListener());
         getEventManager().registerListeners(this, new ProtectionListener());
+        getEventManager().registerListeners(this, new KitPvPCombatLoggerListener());
     }
 
     public Core getCore() {

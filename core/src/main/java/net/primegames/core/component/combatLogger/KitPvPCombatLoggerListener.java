@@ -25,7 +25,7 @@ import org.cloudburstmc.server.event.player.PlayerInteractEvent;
 import org.cloudburstmc.server.event.player.PlayerQuitEvent;
 import org.cloudburstmc.server.player.Player;
 
-public class CombatLoggerListener {
+public class KitPvPCombatLoggerListener {
 
     @Listener(priority = EventPriority.MONITOR)
     public void onDamage(EntityDamageByEntityEvent event) {
@@ -66,7 +66,7 @@ public class CombatLoggerListener {
         CorePlayer player = CorePlayer.cast(event.getPlayer());
         String command = event.getMessage().split(" ")[0].toLowerCase();
         if(player.getServer().getCommandRegistry().getCommandList().contains(command)){
-            player.getServer().getEventManager().fire(new CommandUsedInCombatEvent(player, command));
+            player.getServer().getEventManager().fire(new CommandUsedInCombatEvent(player, event));
         }
     }
 }

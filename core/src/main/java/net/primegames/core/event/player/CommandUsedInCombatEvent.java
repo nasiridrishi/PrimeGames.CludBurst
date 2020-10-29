@@ -9,18 +9,18 @@
 package net.primegames.core.event.player;
 
 import net.primegames.core.CorePlayer;
-import org.cloudburstmc.server.event.Event;
+import org.cloudburstmc.server.event.Cancellable;
 
 public class CommandUsedInCombatEvent extends CorePlayerEvent{
 
-    private final String commandName;
+    private final Cancellable cancellable;
 
-    public CommandUsedInCombatEvent(CorePlayer player, String commandName) {
+    public CommandUsedInCombatEvent(CorePlayer player, Cancellable cancellable) {
         super(player);
-        this.commandName = commandName;
+        this.cancellable = cancellable;
     }
 
-    public String getCommandName() {
-        return commandName;
+    public Cancellable getEvent(){
+        return cancellable;
     }
 }

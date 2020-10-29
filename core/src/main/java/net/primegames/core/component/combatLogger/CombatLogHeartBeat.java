@@ -48,6 +48,8 @@ public class CombatLogHeartBeat extends HeartBeat {
             }else{
                 player.sendMessage(Utils.translateColors("[{GREEN}CombatLogger{RESET}] Restrictions have been lifted"));
                 player.unsetCombatLog();
+                this.stopBeat();
+                countDown = combatTime;
             }
         }
     }

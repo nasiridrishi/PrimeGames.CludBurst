@@ -15,7 +15,7 @@ import net.primegames.core.plugin.CorePlugin;
 public class CombatLoggerComponent implements Component {
 
     public CombatLoggerComponent(CorePlugin plugin){
-        plugin.getEventManager().registerListeners(plugin, new CombatLoggerListener());
+        plugin.getEventManager().registerListeners(plugin, new KitPvPCombatLoggerListener());
     }
 
     @Override
