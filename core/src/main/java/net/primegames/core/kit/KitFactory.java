@@ -14,7 +14,7 @@ import java.util.ArrayList;
 
 public class KitFactory {
 
-    private static final ArrayList<Kit> kits = new ArrayList();
+    private static final ArrayList<Kit> kits = new ArrayList<>();
     private static KitFactory instance;
 
     public KitFactory(){

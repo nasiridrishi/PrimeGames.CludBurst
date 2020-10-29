@@ -3,6 +3,8 @@ package net.primegames.kitpvp;
 import com.google.common.base.Preconditions;
 import net.primegames.core.Core;
 import net.primegames.core.Utils.LoggerUtils;
+import net.primegames.core.component.ComponentManager;
+import net.primegames.core.component.combatLogger.CombatLoggerComponent;
 import net.primegames.core.kit.KitFactory;
 import net.primegames.core.plugin.CorePlugin;
 import net.primegames.kitpvp.kit.ClassicKit;
@@ -53,6 +55,7 @@ public class Kitpvp extends CorePlugin {
         registerListeners();
         setSettings();
         registerKits();
+        ComponentManager.getInstance().addComponent(new CombatLoggerComponent(this));
     }
 
     private Settings getSettings(){

@@ -8,20 +8,27 @@
 
 package net.primegames.core.component;
 
+import net.primegames.core.Utils.LoggerUtils;
+
 import java.util.ArrayList;
 
 public class ComponentManager {
 
     public static ComponentManager instance;
 
-    private ArrayList<Component> components;
+    private final ArrayList<Component> components = new ArrayList<>();
 
     public ComponentManager(){
         instance = this;
     }
 
-    public void addComponent(){
-
+    public void addComponent(Component component){
+        for(Component component1 : components) {
+           if(component1.getIdentifier().equals(component.getIdentifier())){
+               LoggerUtils.warn("Added " + component.getIdentifier() + " which is already exits");
+           }
+        }
+        components.add(component);
     }
 
     public static ComponentManager getInstance() {

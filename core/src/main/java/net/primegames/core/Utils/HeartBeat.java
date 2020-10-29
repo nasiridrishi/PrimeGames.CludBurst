@@ -27,7 +27,7 @@ public class HeartBeat {
     private void init(){
         scheduler = Core.getInstance().getServer().getScheduler().scheduleRepeatingTask(task = new Task() {
             @Override
-            public void onRun(int currentTick) {
+            public void onRun(int currentTick)  {
                 heartBeat += 1;
                 if(heartBeat % 20 == 0){
                     onRunPerSec();
@@ -37,7 +37,10 @@ public class HeartBeat {
     }
 
     public void onRunPerSec(){
+    }
 
+    public TaskHandler getScheduler() {
+        return scheduler;
     }
 
     public int getHeartBeat() {

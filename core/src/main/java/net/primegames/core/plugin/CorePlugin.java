@@ -11,6 +11,7 @@ package net.primegames.core.plugin;
 
 import net.primegames.core.Utils.Config;
 import net.primegames.core.Utils.LoggerUtils;
+import net.primegames.core.component.ComponentManager;
 import org.checkerframework.checker.nullness.qual.NonNull;
 import org.cloudburstmc.server.Server;
 import org.cloudburstmc.server.event.EventManager;
@@ -36,6 +37,7 @@ public abstract class CorePlugin implements PluginContainer {
         this.dataFolder = dataFolder;
         this.server = server;
         defaultConfig = new Config(dataFolder);
+        new ComponentManager();
     }
 
     public Server getServer() {

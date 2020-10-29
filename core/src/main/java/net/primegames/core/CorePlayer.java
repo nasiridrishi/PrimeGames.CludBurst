@@ -190,10 +190,10 @@ public class CorePlayer extends Player implements HasCombatLogger {
     public void setCombatLog() {
         if(this.combatLogHeartBeat == null){
             this.sendMessage(Utils.translateColors("[{RED}CombatLogger{RESET}] Using commands and quitting from server is prohibited during combat log"));
+            combatLogHeartBeat = new CombatLogHeartBeat(this);
         }else{
-            combatLogHeartBeat = null;
+            combatLogHeartBeat.restart();
         }
-        combatLogHeartBeat = new CombatLogHeartBeat(this);
     }
 
     /**
