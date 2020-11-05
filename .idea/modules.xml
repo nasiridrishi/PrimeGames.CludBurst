@@ -5,6 +5,7 @@
       <module fileurl="file://$PROJECT_DIR$/.idea/PrimeGames.Cloudburst.iml" filepath="$PROJECT_DIR$/.idea/PrimeGames.Cloudburst.iml" />
       <module fileurl="file://$PROJECT_DIR$/core/core.iml" filepath="$PROJECT_DIR$/core/core.iml" />
       <module fileurl="file://$PROJECT_DIR$/kitpvp/kitpvp.iml" filepath="$PROJECT_DIR$/kitpvp/kitpvp.iml" />
+      <module fileurl="file://$PROJECT_DIR$/survival/survival.iml" filepath="$PROJECT_DIR$/survival/survival.iml" />
     </modules>
   </component>
 </project>

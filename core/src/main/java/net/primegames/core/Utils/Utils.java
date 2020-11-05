@@ -8,54 +8,41 @@
 
 package net.primegames.core.Utils;
 
-import com.nukkitx.protocol.bedrock.compat.NoopBedrockPacketHelper;
-import io.netty.buffer.ByteBuf;
-import io.netty.buffer.Unpooled;
-import net.primegames.core.CorePlayer;
-import net.primegames.core.group.Permissions;
-import net.primegames.core.providor.task.player.punishment.PunishmentCategory;
-import org.cloudburstmc.server.Server;
-import org.cloudburstmc.server.command.CommandSender;
-import org.cloudburstmc.server.command.ConsoleCommandSender;
-import org.cloudburstmc.server.player.Player;
+
 import org.cloudburstmc.server.utils.TextFormat;
 
-import java.nio.ByteBuffer;
-import java.nio.ByteOrder;
 import java.sql.Date;
-import java.util.Arrays;
 import java.util.Calendar;
-import java.util.UUID;
 
 public class Utils {
 
     // Colors
-    private static String AQUA = "{AQUA}";
-    private  static String BLACK = "{BLACK}";
-    private  static String BLUE = "{BLUE}";
-    private  static String DARK_AQUA = "{DARK_AQUA}";
-    private  static String DARK_BLUE = "{DARK_BLUE}";
-    private  static String DARK_GRAY = "{DARK_GRAY}";
-    private  static String DARK_GREEN = "{DARK_GREEN}";
-    private  static String DARK_RED = "{DARK_RED}";
-    private  static String DARK_PURPLE = "{DARK_PURPLE}";
-    private  static String GOLD = "{GOLD}";
-    private  static String GRAY = "{GRAY}";
-    private  static String GREEN = "{GREEN}";
-    private  static String LIGHT_PURPLE = "{LIGHT_PURPLE}";
-    private  static String ORANGE = "{ORANGE}";
-    private  static String PINK = "{LIGHT_PURPLE}";
-    private  static String RED = "{RED}";
-    private  static String WHITE = "{WHITE}";
-    private  static String YELLOW = "{YELLOW}";
+    private static final String AQUA = "{AQUA}";
+    private  static final String BLACK = "{BLACK}";
+    private  static final String BLUE = "{BLUE}";
+    private  static final String DARK_AQUA = "{DARK_AQUA}";
+    private  static final String DARK_BLUE = "{DARK_BLUE}";
+    private  static final String DARK_GRAY = "{DARK_GRAY}";
+    private  static final String DARK_GREEN = "{DARK_GREEN}";
+    private  static final String DARK_RED = "{DARK_RED}";
+    private  static final String DARK_PURPLE = "{DARK_PURPLE}";
+    private  static final String GOLD = "{GOLD}";
+    private  static final String GRAY = "{GRAY}";
+    private  static final String GREEN = "{GREEN}";
+    private  static final String LIGHT_PURPLE = "{LIGHT_PURPLE}";
+    private  static final String ORANGE = "{ORANGE}";
+    private  static final String PINK = "{LIGHT_PURPLE}";
+    private  static final String RED = "{RED}";
+    private  static final String WHITE = "{WHITE}";
+    private  static final String YELLOW = "{YELLOW}";
 
     // Formatting
-    private  static String BOLD = "{BOLD}";
-    private  static String OBFUSCATED = "{OBFUSCATED}";
-    private  static String STRIKETHROUGH = "{STRIKETHROUGH}";
-    private  static String UNDERLINE = "{UNDERLINE}";
-    private  static String ITALIC = "{ITALIC}";
-    private  static String RESET = "{RESET}";
+    private  static final String BOLD = "{BOLD}";
+    private  static final String OBFUSCATED = "{OBFUSCATED}";
+    private  static final String STRIKETHROUGH = "{STRIKETHROUGH}";
+    private  static final String UNDERLINE = "{UNDERLINE}";
+    private  static final String ITALIC = "{ITALIC}";
+    private  static final String RESET = "{RESET}";
 
     public static String translateColors(String message){
         message = message.replace(BLACK, TextFormat.BLACK.toString());
@@ -89,46 +76,6 @@ public class Utils {
         c.setTime(date);
         c.add(Calendar.DATE, days);
         return new Date(c.getTimeInMillis());
-    }
-
-    public static boolean addSentence(CommandSender sender, String[] args, String usage, int type){
-        if(args.length < 1){
-            LoggerUtils.info("called" + args.length);
-            sender.sendMessage(usage);
-            return false;
-        }
-        Player player = Server.getInstance().getPlayer(args[0]);
-        if(player == null){
-            sender.sendMessage("Player is not online");
-            //todo ban offline player
-            return false;
-        }
-        Date time = null;
-        if(args.length  > 1){
-            int days = 0;
-            try {
-                days = Integer.parseInt(args[1]);
-            } catch (final NumberFormatException e) {
-                sender.sendMessage("time must be in integers ");
-                return false;
-            }
-            time = Utils.addDays(new Date(System.currentTimeMillis()), days);
-        }
-        String reason = "";
-        if(args.length > 2){
-            reason = Arrays.toString((Arrays.copyOfRange(args, 2, args.length)));
-        }
-        CorePlayer target = CorePlayer.cast(player);
-        target.sentence(reason, sender.getName(), time, type);
-        String banType = "";
-        if(type == PunishmentCategory.MUTE){
-            banType = "muted";
-        }
-        if(type == PunishmentCategory.BAN){
-            banType = "banned";
-        }
-        sender.sendMessage("Successfully "+ banType + "  player "+ target.getName());
-        return true;
     }
 
 }

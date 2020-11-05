@@ -15,7 +15,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-public class MySQLPardonPlayerTask extends MySQLPostQueryTask {
+final public class MySQLPardonPlayerTask extends MySQLPostQueryTask {
     @Override
     protected PreparedStatement preparedStatement(Connection connection) throws SQLException, ConverterException {
         return null;

@@ -1,13 +1,17 @@
 package net.primegames.core;
 
 import com.nukkitx.protocol.bedrock.BedrockServerSession;
+import lombok.Getter;
+import lombok.Setter;
 import net.primegames.core.Utils.LoggerUtils;
+import net.primegames.core.Utils.Utils;
 import net.primegames.core.chat.Chat;
 import net.primegames.core.chat.ChatFactory;
 import net.primegames.core.chat.ChatId;
+import net.primegames.core.component.combatLogger.CombatLogHeartBeat;
 import net.primegames.core.group.Group;
 import net.primegames.core.group.GroupIds;
-import net.primegames.core.player.CorePlayerDatabaseData;
+import net.primegames.core.player.CorePlayerDataStore;
 import net.primegames.core.providor.task.player.punishment.MySQLPunishPlayerTask;
 import org.cloudburstmc.server.player.Player;
 import org.cloudburstmc.server.utils.ClientChainData;
@@ -31,7 +35,7 @@ public class CorePlayer extends Player{
 
     private String status = STATUS_LOADING;
 
-    private CorePlayerDatabaseData databaseData;
+    private CorePlayerDataStore databaseData;
 
     private ArrayList<Group> groups = new ArrayList<>();
 
@@ -105,11 +109,11 @@ public class CorePlayer extends Player{
 
 
 
-    public void setDatabaseData(CorePlayerDatabaseData databaseData) {
+    public void setDatabaseData(CorePlayerDataStore databaseData) {
         this.databaseData = databaseData;
     }
 
-    public CorePlayerDatabaseData getDatabaseData() {
+    public CorePlayerDataStore getCoreDataStore() {
         return databaseData;
     }
 
@@ -173,4 +177,17 @@ public class CorePlayer extends Player{
     public static CorePlayer cast(Player player){
         return (CorePlayer)player;
     }
+
+    public int getFloorX(){
+        return (int) this.getX();
+    }
+
+    public int getFloorY(){
+        return (int) this.getY();
+    }
+
+    public int getFloorZ(){
+        return (int) this.getZ();
+    }
+
 }

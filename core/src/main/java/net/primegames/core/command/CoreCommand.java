@@ -11,16 +11,15 @@ package net.primegames.core.command;
 import net.primegames.core.Core;
 import net.primegames.core.CorePlayer;
 import org.cloudburstmc.server.Server;
-import org.cloudburstmc.server.command.CommandSender;
-import org.cloudburstmc.server.command.ConsoleCommandSender;
-import org.cloudburstmc.server.command.PluginCommand;
+import org.cloudburstmc.server.command.*;
 import org.cloudburstmc.server.command.data.CommandData;
 import org.cloudburstmc.server.player.Player;
 
-abstract public class CoreCommand extends PluginCommand<Core> {
+abstract public class CoreCommand extends Command{
+
 
     public CoreCommand(CommandData data) {
-        super(Core.getInstance(), data);
+        super(data);
     }
 
     public CorePlayer getPlayerExact(String username){
@@ -31,6 +30,7 @@ abstract public class CoreCommand extends PluginCommand<Core> {
         return null;
     }
 
+
     public CorePlayer getPlayer(String username){
         Player player = Server.getInstance().getPlayer(username);
         if(player != null){
@@ -39,17 +39,15 @@ abstract public class CoreCommand extends PluginCommand<Core> {
         return null;
     }
 
-    public boolean checkConsole(CommandSender sender){
+    public boolean isConsole(CommandSender sender){
         return sender instanceof ConsoleCommandSender;
     }
 
-    public boolean checkPlayer(CommandSender sender){
+    public boolean isCorePlayer(CommandSender sender){
         return sender instanceof CorePlayer;
     }
 
     public boolean checkPermission(CorePlayer player, String permission){
         return player.hasGroupPermission(permission);
     }
-
-    public abstract boolean execute(CommandSender sender, String commandLabel, String[] args);
 }

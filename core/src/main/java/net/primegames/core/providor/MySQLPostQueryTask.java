@@ -8,7 +8,6 @@
 
 package net.primegames.core.providor;
 
-import org.cloudburstmc.server.scheduler.AsyncTask;
 import org.sql2o.converters.ConverterException;
 
 import java.sql.Connection;

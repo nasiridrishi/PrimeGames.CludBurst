@@ -17,7 +17,7 @@ import java.sql.*;
 import java.util.UUID;
 
 
-public class MySQLCheckPlayerPunishmentTask extends MySqlFetchQueryTask {
+final public class MySQLCheckPlayerPunishmentTask extends MySqlFetchQueryTask {
 
     private UUID uuid;
 

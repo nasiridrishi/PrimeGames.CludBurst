@@ -8,10 +8,11 @@
 
 package net.primegames.core.providor.task.player;
 
+import net.primegames.core.Core;
 import net.primegames.core.CorePlayer;
 import net.primegames.core.Utils.LoggerUtils;
-import net.primegames.core.Utils.Utils;
-import net.primegames.core.player.CorePlayerDatabaseData;
+import net.primegames.core.event.player.CorePlayerRegisteredEvent;
+import net.primegames.core.player.CorePlayerDataStore;
 import net.primegames.core.providor.MySQLPostQueryTask;
 
 import java.sql.Connection;
@@ -21,7 +22,7 @@ import java.sql.Statement;
 import java.util.Date;
 import java.util.UUID;
 
-public class PlayerRegisterTask extends MySQLPostQueryTask {
+final public class PlayerRegisterTask extends MySQLPostQueryTask {
 
     private UUID uuid;
     private String userName;
@@ -47,7 +48,7 @@ public class PlayerRegisterTask extends MySQLPostQueryTask {
     @Override
     protected void onInsert(int id) {
         if(verifyPlayer(uuid)){
-            player.setDatabaseData(new CorePlayerDatabaseData(player,
+            player.setDatabaseData(new CorePlayerDataStore(player,
                     id,
                     player.getAddress(),
                     "??",
@@ -63,7 +64,7 @@ public class PlayerRegisterTask extends MySQLPostQueryTask {
                     0,
                     "??"
                     ));
-            //todo PlayerRegistered Event
+            Core.getInstance().getServer().getEventManager().fire(new CorePlayerRegisteredEvent(player));
             LoggerUtils.debug("new registration successful for " + player.getName());
             player.setStatus(player.STATUS_ONLINE);
         }

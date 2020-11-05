@@ -8,5 +8,10 @@
 
 package net.primegames.core.event.player;
 
-public class CorePlayerRegisteredEvent {
+import net.primegames.core.CorePlayer;
+
+public class CorePlayerRegisteredEvent extends CorePlayerEvent{
+    public CorePlayerRegisteredEvent(CorePlayer player) {
+        super(player);
+    }
 }
