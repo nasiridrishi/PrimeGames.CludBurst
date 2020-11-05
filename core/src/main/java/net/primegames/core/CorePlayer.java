@@ -1,26 +1,25 @@
 package net.primegames.core;
 
 import com.nukkitx.protocol.bedrock.BedrockServerSession;
+import lombok.Getter;
+import lombok.Setter;
 import net.primegames.core.Utils.LoggerUtils;
 import net.primegames.core.Utils.Utils;
 import net.primegames.core.chat.Chat;
 import net.primegames.core.chat.ChatFactory;
 import net.primegames.core.chat.ChatId;
 import net.primegames.core.component.combatLogger.CombatLogHeartBeat;
-import net.primegames.core.component.combatLogger.HasCombatLogger;
 import net.primegames.core.group.Group;
 import net.primegames.core.group.GroupIds;
-import net.primegames.core.player.CorePlayerDatabaseData;
+import net.primegames.core.player.CorePlayerDataStore;
 import net.primegames.core.providor.task.player.punishment.MySQLPunishPlayerTask;
 import org.cloudburstmc.server.player.Player;
 import org.cloudburstmc.server.utils.ClientChainData;
-import org.cloudburstmc.server.utils.TextFormat;
 
 import java.sql.Date;
-import java.time.Instant;
 import java.util.ArrayList;
 
-public class CorePlayer extends Player implements HasCombatLogger {
+public class CorePlayer extends Player{
 
     public final String STATUS_LOADING = "status.loading";
     public final String STATUS_REGISTER_PENDING = "status.registration_pending";
@@ -36,11 +35,9 @@ public class CorePlayer extends Player implements HasCombatLogger {
 
     private String status = STATUS_LOADING;
 
-    private CorePlayerDatabaseData databaseData;
+    private CorePlayerDataStore databaseData;
 
     private ArrayList<Group> groups = new ArrayList<>();
-
-    private CombatLogHeartBeat combatLogHeartBeat = null;
 
     public CorePlayer(BedrockServerSession session, ClientChainData chainData) {
         super(session, chainData);
@@ -112,11 +109,11 @@ public class CorePlayer extends Player implements HasCombatLogger {
 
 
 
-    public void setDatabaseData(CorePlayerDatabaseData databaseData) {
+    public void setDatabaseData(CorePlayerDataStore databaseData) {
         this.databaseData = databaseData;
     }
 
-    public CorePlayerDatabaseData getDatabaseData() {
+    public CorePlayerDataStore getCoreDataStore() {
         return databaseData;
     }
 
@@ -181,34 +178,16 @@ public class CorePlayer extends Player implements HasCombatLogger {
         return (CorePlayer)player;
     }
 
-    @Override
-    public boolean isInCombatLog() {
-        return combatLogHeartBeat != null;
+    public int getFloorX(){
+        return (int) this.getX();
     }
 
-    @Override
-    public void setCombatLog() {
-        if(this.combatLogHeartBeat == null){
-            this.sendMessage(Utils.translateColors("[{RED}CombatLogger{RESET}] Using commands and quitting from server is prohibited during combat log"));
-            combatLogHeartBeat = new CombatLogHeartBeat(this);
-        }else{
-            combatLogHeartBeat.restart();
-        }
+    public int getFloorY(){
+        return (int) this.getY();
     }
 
-    /**
-     * returns combat time left in seconds.
-     */
-    @Override
-    public int getCombatTimeLeft() {
-        if(isInCombatLog()){
-            return combatLogHeartBeat.getCountDown();
-        }
-        return 0;
+    public int getFloorZ(){
+        return (int) this.getZ();
     }
 
-    @Override
-    public void unsetCombatLog() {
-        combatLogHeartBeat = null;
-    }
 }

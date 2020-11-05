@@ -13,19 +13,16 @@ import net.primegames.core.CorePlayer;
 import net.primegames.core.Utils.LoggerUtils;
 import net.primegames.core.event.player.CorePlayerLoadedEvent;
 import net.primegames.core.group.Group;
-import net.primegames.core.player.CorePlayerDatabaseData;
+import net.primegames.core.player.CorePlayerDataStore;
 import net.primegames.core.providor.MySqlFetchQueryTask;
-import org.cloudburstmc.server.Server;
-import org.cloudburstmc.server.event.Event;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.UUID;
 
-public class PlayerLoadTask extends MySqlFetchQueryTask {
+final public class PlayerLoadTask extends MySqlFetchQueryTask {
 
     private final UUID uuid;
 
@@ -51,12 +48,11 @@ public class PlayerLoadTask extends MySqlFetchQueryTask {
 
     @Override
     protected void handleResult(ResultSet resultSet) throws SQLException {
-        CorePlayerDatabaseData playerDatabaseData = null;
-        ArrayList<Group> groups = null;
+        CorePlayerDataStore playerDatabaseData = null;
         if(verifyPlayer(uuid)){
             if(resultSet.next()){
                 try {
-                    playerDatabaseData = new CorePlayerDatabaseData(
+                    playerDatabaseData = new CorePlayerDataStore(
                             player,
                             resultSet.getInt("id"),
                             resultSet.getString("last_ip"),
@@ -73,7 +69,6 @@ public class PlayerLoadTask extends MySqlFetchQueryTask {
                             resultSet.getInt("legendary_keys"),
                             resultSet.getString("locale")
                     );
-                    //LoggerUtils.info(resultSet.getNString("all_groups"));
                     String[] groupIds = resultSet.getString("all_groups").split(",");
                     for (String groupdId: groupIds){
                         Group group = Core.getInstance().getGroupManager().getGroup(Integer.parseInt(groupdId));
@@ -86,8 +81,7 @@ public class PlayerLoadTask extends MySqlFetchQueryTask {
                 }
                 if(playerDatabaseData != null){
                     player.setDatabaseData(playerDatabaseData);
-                    CorePlayerLoadedEvent event = new CorePlayerLoadedEvent(player);
-                    //todo Core.getInstance().getServer().getPluginManager().callEvent(event);
+                    Core.getInstance().getServer().getEventManager().fire(new CorePlayerLoadedEvent(player));
                     LoggerUtils.debug("Successfully loaded data from " + player.getName());
                     player.setStatus(player.STATUS_ONLINE);
                 }

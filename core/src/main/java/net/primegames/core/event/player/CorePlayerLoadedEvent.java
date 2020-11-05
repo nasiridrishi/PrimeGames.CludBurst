@@ -11,12 +11,6 @@ package net.primegames.core.event.player;
 import net.primegames.core.CorePlayer;
 
 public class CorePlayerLoadedEvent extends CorePlayerEvent{
-//    private static final HandlerList handlers = new HandlerList();
-//
-//    public static HandlerList getHandlers() {
-//        return handlers;
-//    }
-
     public CorePlayerLoadedEvent(CorePlayer player) {
         super(player);
     }

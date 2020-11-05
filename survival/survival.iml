@@ -36,6 +36,7 @@
     <orderEntry type="library" name="Maven: org.sql2o:sql2o:1.6.0" level="project" />
     <orderEntry type="library" name="Maven: org.jetbrains:annotations-java5:20.1.0" level="project" />
     <orderEntry type="module" module-name="core" />
+    <orderEntry type="library" name="Maven: com.github.nasiridrishi:ScoreboardAPI:48eec4ed9c" level="project" />
     <orderEntry type="library" name="Maven: ru.nukkit.dblib:DbLib:1.0-SNAPSHOT" level="project" />
   </component>
 </module>

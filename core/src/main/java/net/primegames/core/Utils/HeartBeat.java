@@ -12,35 +12,36 @@ import net.primegames.core.Core;
 import org.cloudburstmc.server.scheduler.Task;
 import org.cloudburstmc.server.scheduler.TaskHandler;
 
+import java.time.Instant;
+
 public class HeartBeat {
 
     private int heartBeat = 0;
 
-    private TaskHandler scheduler;
+    private TaskHandler perSecScheduler;
 
     private Task task = null;
+
+    private Long initStamp = Instant.now().getEpochSecond();
 
     public HeartBeat(){
         init();
     }
 
     private void init(){
-        scheduler = Core.getInstance().getServer().getScheduler().scheduleRepeatingTask(task = new Task() {
+        perSecScheduler = Core.getInstance().getServer().getScheduler().scheduleRepeatingTask(task = new Task() {
             @Override
             public void onRun(int currentTick)  {
-                heartBeat += 1;
-                if(heartBeat % 20 == 0){
-                    onRunPerSec();
-                }
+                onRunPerSec();
             }
-        }, 1);
+        }, 20);
     }
 
     public void onRunPerSec(){
     }
 
-    public TaskHandler getScheduler() {
-        return scheduler;
+    public TaskHandler getPerSecScheduler() {
+        return perSecScheduler;
     }
 
     public int getHeartBeat() {
@@ -59,7 +60,7 @@ public class HeartBeat {
         if(task != null){
             Core.getInstance().getServer().getScheduler().cancelTask(task.getTaskId());
             task = null;
-            scheduler = null;
+            perSecScheduler = null;
         }
     }
 }

@@ -8,22 +8,30 @@ import net.primegames.core.component.combatLogger.CombatLoggerComponent;
 import net.primegames.core.component.combatLogger.KitPvPCombatLoggerListener;
 import net.primegames.core.kit.KitFactory;
 import net.primegames.core.plugin.CorePlugin;
+import net.primegames.kitpvp.item.FixedHotBarSword;
 import net.primegames.kitpvp.kit.ClassicKit;
-import net.primegames.kitpvp.listener.KitpvpCustomPlayerListener;
-import net.primegames.kitpvp.listener.PlayerKitListener;
-import net.primegames.kitpvp.listener.ProtectionListener;
+import net.primegames.kitpvp.listener.*;
 import net.primegames.kitpvp.settings.Settings;
 import net.primegames.kitpvp.settings.presets.ClassicSettings;
+import net.primegames.kitpvp.utils.KitPvPHeartBeat;
 import org.cloudburstmc.server.Server;
 import org.cloudburstmc.server.event.Listener;
 import org.cloudburstmc.server.event.server.ServerInitializationEvent;
 import org.cloudburstmc.server.event.server.ServerStartEvent;
+import org.cloudburstmc.server.item.ItemFactory;
+import org.cloudburstmc.server.item.behavior.ItemIds;
+import org.cloudburstmc.server.player.Player;
 import org.cloudburstmc.server.plugin.Plugin;
 import org.cloudburstmc.server.plugin.PluginDescription;
+import org.cloudburstmc.server.registry.ItemRegistry;
+import org.cloudburstmc.server.utils.Identifier;
 import org.slf4j.Logger;
 
 import javax.inject.Inject;
 import java.nio.file.Path;
+import java.util.ArrayList;
+import java.util.Map;
+import java.util.UUID;
 
 @Plugin(id = "Kitpvp", version = "0.0.1")
 public class Kitpvp extends CorePlugin {
@@ -32,7 +40,7 @@ public class Kitpvp extends CorePlugin {
 
     private Settings settings;
 
-    private Core core;
+    private final Core core;
 
     @Inject
     private Kitpvp(Logger logger, PluginDescription description, Path dataFolder, Server server) {
@@ -41,6 +49,8 @@ public class Kitpvp extends CorePlugin {
         Preconditions.checkState(instance == null, "Already initialized!");
         instance = this;
         Server.getInstance().setAutoSave(false);
+        ItemRegistry.get().register(ItemIds.DIAMOND_SWORD, FixedHotBarSword::new);
+        new KitPvPHeartBeat();
     }
 
     @Override
@@ -87,9 +97,19 @@ public class Kitpvp extends CorePlugin {
         getEventManager().registerListeners(this, new PlayerKitListener());
         getEventManager().registerListeners(this, new ProtectionListener());
         getEventManager().registerListeners(this, new KitPvPCombatLoggerListener());
+        getEventManager().registerListeners(this, new ScoreBoardListener());
+        getEventManager().registerListeners(this, new KitPvPPlayerLoadListener());
     }
 
     public Core getCore() {
         return core;
+    }
+
+    public ArrayList<KitpvpPlayer> getOnlineKitPlayers(){
+        ArrayList<KitpvpPlayer> players = new ArrayList<>();
+        for (Map.Entry<UUID, Player> entry: getServer().getOnlinePlayers().entrySet()){
+            players.add(KitpvpPlayer.cast(entry.getValue()));
+        }
+        return players;
     }
 }

@@ -1,20 +1,21 @@
 package net.primegames.kitpvp.listener;
 
-import net.primegames.core.Core;
-import net.primegames.core.Utils.LoggerUtils;
 import net.primegames.core.kit.KitIds;
 import net.primegames.kitpvp.Kitpvp;
+import net.primegames.kitpvp.KitpvpPlayer;
+import net.primegames.kitpvp.item.FixedHotBarSword;
 import org.cloudburstmc.server.event.Listener;
 import org.cloudburstmc.server.event.player.PlayerDeathEvent;
 import org.cloudburstmc.server.event.player.PlayerJoinEvent;
 import org.cloudburstmc.server.event.player.PlayerRespawnEvent;
+import org.cloudburstmc.server.item.behavior.ItemIds;
 import org.cloudburstmc.server.player.Player;
 
 public class PlayerKitListener {
 
     @Listener
     public void onJoin(PlayerJoinEvent event){
-        setClassicKit(event.getPlayer());
+        setKit(event.getPlayer());
     }
 
     @Listener
@@ -24,10 +25,14 @@ public class PlayerKitListener {
 
     @Listener
     public void onRespawn(PlayerRespawnEvent event){
-        setClassicKit(event.getPlayer());
+        setKit(event.getPlayer());
     }
 
-    private void setClassicKit(Player player){
-        Kitpvp.getInstance().getCore().getKitFactory().getKit(KitIds.classicKit).addTo(player);
+    private void setKit(Player player){
+        KitpvpPlayer kitPlayer = KitpvpPlayer.cast(player);
+        FixedHotBarSword sword = new FixedHotBarSword(ItemIds.DIAMOND_SWORD);
+        sword.setData(kitPlayer);
+        kitPlayer.getInventory().setItem(0, sword);
+        //Kitpvp.getInstance().getCore().getKitFactory().getKit(KitIds.classicKit).addTo(player);
     }
 }

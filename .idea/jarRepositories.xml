@@ -67,6 +67,11 @@
       <option name="url" value="http://jenkins.onebone.me/plugin/repository/everything/" />
     </remote-repository>
     <remote-repository>
+      <option name="id" value="releases" />
+      <option name="name" value="releases" />
+      <option name="url" value="http://lucgameshd.de:8081/content/repositories/releases" />
+    </remote-repository>
+    <remote-repository>
       <option name="id" value="org.async.jdbc" />
       <option name="name" value="org.async.jdbc" />
       <option name="url" value="file://$PROJECT_DIR$/core/libs" />

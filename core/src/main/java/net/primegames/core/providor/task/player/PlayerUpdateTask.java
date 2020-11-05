@@ -9,8 +9,7 @@
 package net.primegames.core.providor.task.player;
 
 import net.primegames.core.CorePlayer;
-import net.primegames.core.Utils.Utils;
-import net.primegames.core.player.CorePlayerDatabaseData;
+import net.primegames.core.player.CorePlayerDataStore;
 import net.primegames.core.providor.MySQLPostQueryTask;
 
 import java.sql.Connection;
@@ -18,7 +17,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.UUID;
 
-public class PlayerUpdateTask extends MySQLPostQueryTask {
+final public class PlayerUpdateTask extends MySQLPostQueryTask {
 
     private UUID uuid;
     private String username;
@@ -58,7 +57,7 @@ public class PlayerUpdateTask extends MySQLPostQueryTask {
 
                 "last_connection = CURRENT_TIMESTAMP" +
                 "WHERE id = ?");
-        CorePlayerDatabaseData db = player.getDatabaseData();
+        CorePlayerDataStore db = player.getCoreDataStore();
         statement.setString(1, uuid.toString());
         statement.setString(2, username);
         statement.setString(3, ip);
@@ -66,7 +65,7 @@ public class PlayerUpdateTask extends MySQLPostQueryTask {
         statement.setString(5, db.getLocale());
         statement.setString(6, db.getContinent_code());
         statement.setString(7, db.getCountry_code());
-        statement.setInt(8, db.getCommonkeys());
+        statement.setInt(8, db.getCommonKeys());
         statement.setInt(9, db.getVoteKeys());
         statement.setInt(10, db.getRareKeys());
         statement.setInt(11, db.getLegendaryKeys());
@@ -74,7 +73,7 @@ public class PlayerUpdateTask extends MySQLPostQueryTask {
         statement.setLong(13, db.getLastSessionDuration());
 
         statement.setInt(14, db.getWarnings());
-        statement.setInt(15, db.getInternal_id());
+        statement.setInt(15, db.getInternalId());
 
         return statement;
     }

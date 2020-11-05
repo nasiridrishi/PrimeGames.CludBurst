@@ -21,7 +21,7 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-public class MySQLPunishPlayerTask extends MySQLPostQueryTask {
+final public class MySQLPunishPlayerTask extends MySQLPostQueryTask {
 
     private String username;
 
