@@ -8,22 +8,22 @@
 
 package net.primegames.core.command.staff.mod;
 
+import cn.nukkit.command.CommandSender;
+import cn.nukkit.command.ConsoleCommandSender;
+import net.primegames.core.Core;
 import net.primegames.core.CorePlayer;
 import net.primegames.core.command.staff.SentenceCommand;
 import net.primegames.core.group.Permissions;
+import net.primegames.core.plugin.CorePlugin;
 import net.primegames.core.providor.task.player.punishment.PunishmentCategory;
-import org.cloudburstmc.server.command.CommandSender;
-import org.cloudburstmc.server.command.ConsoleCommandSender;
-import org.cloudburstmc.server.command.data.CommandData;
 
 
 
 public class BanCommand extends SentenceCommand {
 
+
     public BanCommand() {
-        super(CommandData.builder("ban")
-                .setUsageMessage("/ban <player> <time(in days as 7 , 8, 9> <reason>")
-                .build());
+        super("ban", Core.getInstance().getPlugin());
     }
 
     @Override

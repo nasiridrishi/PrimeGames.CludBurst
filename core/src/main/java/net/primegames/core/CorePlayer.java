@@ -1,25 +1,21 @@
 package net.primegames.core;
 
-import com.nukkitx.protocol.bedrock.BedrockServerSession;
-import lombok.Getter;
-import lombok.Setter;
+import cn.nukkit.Player;
+import cn.nukkit.network.SourceInterface;
 import net.primegames.core.Utils.LoggerUtils;
-import net.primegames.core.Utils.Utils;
 import net.primegames.core.chat.Chat;
 import net.primegames.core.chat.ChatFactory;
 import net.primegames.core.chat.ChatId;
-import net.primegames.core.component.combatLogger.CombatLogHeartBeat;
 import net.primegames.core.group.Group;
 import net.primegames.core.group.GroupIds;
 import net.primegames.core.player.CorePlayerDataStore;
 import net.primegames.core.providor.task.player.punishment.MySQLPunishPlayerTask;
-import org.cloudburstmc.server.player.Player;
-import org.cloudburstmc.server.utils.ClientChainData;
 
+import java.net.InetSocketAddress;
 import java.sql.Date;
 import java.util.ArrayList;
 
-public class CorePlayer extends Player{
+public class CorePlayer extends Player {
 
     public final String STATUS_LOADING = "status.loading";
     public final String STATUS_REGISTER_PENDING = "status.registration_pending";
@@ -39,11 +35,12 @@ public class CorePlayer extends Player{
 
     private ArrayList<Group> groups = new ArrayList<>();
 
-    public CorePlayer(BedrockServerSession session, ClientChainData chainData) {
-        super(session, chainData);
+    public CorePlayer(SourceInterface interfaz, Long clientID, InetSocketAddress socketAddress) {
+        super(interfaz, clientID, socketAddress);
         addGroup(Core.getInstance().getGroupManager().getGroup(GroupIds.MORTAL));
         chat = ChatFactory.getChat(ChatId.MAIN_CHAT);
     }
+
 
     public ArrayList<Group> getGroups(){
         return groups;
@@ -159,7 +156,7 @@ public class CorePlayer extends Player{
     }
 
     public void sentence(String reason, String effector, Date expiration, int category){
-        Core.getInstance().getMySQLProvider().scheduleTask(new MySQLPunishPlayerTask(getName(), effector, reason, getServerId().toString(), expiration, getAddress(), category));
+        Core.getInstance().getMySQLProvider().scheduleTask(new MySQLPunishPlayerTask(getName(), effector, reason, getUniqueId().toString(), expiration, getAddress(), category));
     }
 
     public void mute(){

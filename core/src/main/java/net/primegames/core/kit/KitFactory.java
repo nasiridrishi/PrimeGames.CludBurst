@@ -9,6 +9,7 @@
 package net.primegames.core.kit;
 
 import net.primegames.core.Core;
+import net.primegames.core.Utils.LoggerUtils;
 
 import java.util.ArrayList;
 
@@ -34,7 +35,7 @@ public class KitFactory {
 
     public void registerKit(Kit kit){
         kits.add(kit);
-        Core.getInstance().getLogger().info("Registered new kit " + kit.getId());
+        LoggerUtils.info("Registered new kit " + kit.getId());
     }
 
     public Kit getKit(String kitId){

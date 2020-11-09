@@ -8,16 +8,16 @@
 
 package net.primegames.kitpvp.listener;
 
+import cn.nukkit.event.EventHandler;
+import cn.nukkit.event.Listener;
+import cn.nukkit.event.player.PlayerJoinEvent;
 import net.primegames.kitpvp.KitpvpPlayer;
-import org.cloudburstmc.server.event.Listener;
-import org.cloudburstmc.server.event.player.PlayerJoinEvent;
-import org.cloudburstmc.server.plugin.Plugin;
 
 import java.lang.reflect.Array;
 
-public class ScoreBoardListener {
+public class ScoreBoardListener implements Listener {
 
-    @Listener
+    @EventHandler
     public void onJoin(PlayerJoinEvent event){
         KitpvpPlayer player = KitpvpPlayer.cast(event.getPlayer());
     }

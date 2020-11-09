@@ -8,14 +8,15 @@
 
 package net.primegames.core.listener;
 
+import cn.nukkit.event.EventHandler;
+import cn.nukkit.event.Listener;
+import cn.nukkit.event.player.PlayerCreationEvent;
 import net.primegames.core.CorePlayer;
-import org.cloudburstmc.server.event.Listener;
-import org.cloudburstmc.server.event.player.PlayerCreationEvent;
 
 
-public class CustomCorePlayerListener {
+public class CustomCorePlayerListener implements Listener {
 
-    @Listener()
+    @EventHandler
     public void onPlayerCreation(PlayerCreationEvent event) {
         event.setPlayerClass(CorePlayer.class);
     }

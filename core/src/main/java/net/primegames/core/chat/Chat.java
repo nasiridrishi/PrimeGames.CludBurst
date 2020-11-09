@@ -8,12 +8,11 @@
 
 package net.primegames.core.chat;
 
+import cn.nukkit.Player;
 import net.primegames.core.Core;
 import net.primegames.core.CorePlayer;
-import org.cloudburstmc.server.player.Player;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 

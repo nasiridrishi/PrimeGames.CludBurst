@@ -8,16 +8,17 @@
 
 package net.primegames.core.component.autoInv;
 
+import cn.nukkit.event.EventHandler;
+import cn.nukkit.event.Listener;
+import cn.nukkit.event.block.BlockBreakEvent;
+import cn.nukkit.inventory.Inventory;
+import cn.nukkit.item.Item;
+import cn.nukkit.utils.TextFormat;
 import net.primegames.core.CorePlayer;
-import org.cloudburstmc.server.event.Listener;
-import org.cloudburstmc.server.event.block.BlockBreakEvent;
-import org.cloudburstmc.server.inventory.Inventory;
-import org.cloudburstmc.server.item.behavior.Item;
-import org.cloudburstmc.server.utils.TextFormat;
 
-public class AutoInvListener {
+public class AutoInvListener implements Listener {
 
-    @Listener
+    @EventHandler
     public void onBreak(BlockBreakEvent event){
         CorePlayer player = CorePlayer.cast(event.getPlayer());
         Inventory inventory = player.getInventory();

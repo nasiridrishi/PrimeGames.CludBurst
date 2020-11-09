@@ -8,9 +8,9 @@
 
 package net.primegames.core.Utils;
 
+import cn.nukkit.scheduler.Task;
+import cn.nukkit.scheduler.TaskHandler;
 import net.primegames.core.Core;
-import org.cloudburstmc.server.scheduler.Task;
-import org.cloudburstmc.server.scheduler.TaskHandler;
 
 import java.time.Instant;
 

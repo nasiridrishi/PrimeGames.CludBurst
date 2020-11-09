@@ -6,8 +6,9 @@
  *
  */
 
-package net.primegames.core.kit;
+package net.primegames.kitpvp.duels;
 
-public class KitIds {
-    public static String classicKit = "classic";
+public class DuelManager {
+
+
 }

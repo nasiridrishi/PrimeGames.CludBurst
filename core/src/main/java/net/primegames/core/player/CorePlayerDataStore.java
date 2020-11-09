@@ -39,7 +39,7 @@ import java.util.Date;
     private String locale = "eng";
 
     public CorePlayerDataStore(CorePlayer player, int internalId, String last_ip, String country_code, String continent_code, int reputation, int warnings, long timePlayed, long lastSessionDuration, Date registeredAt, int voteKeys, int commonKeys, int rareKeys, int legendaryKeys, String locale){
-        this.uuid = player.getServerId().toString();
+        this.uuid = player.getUniqueId().toString();
         this.username = player.getName();
         this.lastSession = System.currentTimeMillis();
         this.internalId = internalId;

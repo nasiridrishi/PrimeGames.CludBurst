@@ -8,16 +8,15 @@
 
 package net.primegames.kitpvp.item;
 
+import cn.nukkit.item.ItemID;
+import cn.nukkit.item.ItemSwordDiamond;
 import net.primegames.core.component.killtracker.tracker.KillTrackerDataStore;
 import net.primegames.kitpvp.KitpvpPlayer;
-import org.cloudburstmc.server.item.behavior.ItemIds;
-import org.cloudburstmc.server.item.behavior.ItemSwordDiamond;
-import org.cloudburstmc.server.utils.Identifier;
 
 public class FixedHotBarSword extends ItemSwordDiamond {
 
-    public FixedHotBarSword(Identifier id) {
-        super(id);
+    public FixedHotBarSword() {
+        super(ItemID.DIAMOND_SWORD);
     }
 
     public void setData(KitpvpPlayer player){

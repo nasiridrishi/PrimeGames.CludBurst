@@ -8,10 +8,10 @@
 
 package net.primegames.core.providor.task.player.punishment;
 
+import cn.nukkit.utils.TextFormat;
 import net.primegames.core.CorePlayer;
 import net.primegames.core.Utils.LoggerUtils;
 import net.primegames.core.providor.MySqlFetchQueryTask;
-import org.cloudburstmc.server.utils.TextFormat;
 
 import java.sql.*;
 import java.util.UUID;
@@ -19,14 +19,14 @@ import java.util.UUID;
 
 final public class MySQLCheckPlayerPunishmentTask extends MySqlFetchQueryTask {
 
-    private UUID uuid;
+    private final UUID uuid;
 
-    private String username;
+    private final String username;
 
-    private CorePlayer player;
+    private final CorePlayer player;
 
     public MySQLCheckPlayerPunishmentTask(CorePlayer corePlayer){
-        uuid = corePlayer.getServerId();
+        uuid = corePlayer.getUniqueId();
         username = corePlayer.getName();
         player = corePlayer;
     }

@@ -27,7 +27,7 @@ final public class PlayerUpdateTask extends MySQLPostQueryTask {
     public PlayerUpdateTask(CorePlayer player){
         player.setStatus(player.STATUS_UPDATING);
         this.username = player.getName();
-        this.uuid = player.getServerId();
+        this.uuid = player.getUniqueId();
         this.player = player;
         ip = player.getAddress();
     }

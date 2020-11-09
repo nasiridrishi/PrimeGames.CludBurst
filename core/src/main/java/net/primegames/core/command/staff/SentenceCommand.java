@@ -8,16 +8,14 @@
 
 package net.primegames.core.command.staff;
 
+import cn.nukkit.Player;
+import cn.nukkit.Server;
+import cn.nukkit.command.CommandSender;
 import net.primegames.core.CorePlayer;
-import net.primegames.core.Utils.LoggerUtils;
 import net.primegames.core.Utils.Utils;
 import net.primegames.core.command.CoreCommand;
+import net.primegames.core.plugin.CorePlugin;
 import net.primegames.core.providor.task.player.punishment.PunishmentCategory;
-import org.cloudburstmc.server.Server;
-import org.cloudburstmc.server.command.CommandExecutor;
-import org.cloudburstmc.server.command.CommandSender;
-import org.cloudburstmc.server.command.data.CommandData;
-import org.cloudburstmc.server.player.Player;
 
 import java.sql.Date;
 import java.util.Arrays;
@@ -25,8 +23,8 @@ import java.util.Arrays;
 public abstract class SentenceCommand extends CoreCommand{
 
 
-    public SentenceCommand(CommandData data) {
-        super(data);
+    public SentenceCommand(String name, CorePlugin owner) {
+        super(name, owner);
     }
 
     public static boolean addSentence(CommandSender sender, String[] args, String usage, int type){

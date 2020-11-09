@@ -6,9 +6,8 @@
  *
  */
 
-package net.primegames.core.event.player;
+package net.primegames.kitpvp.kit;
 
-import cn.nukkit.event.Event;
-
-public class CoreEvent extends Event {
+public interface KitIds {
+    String CLASSIC = "classic";
 }

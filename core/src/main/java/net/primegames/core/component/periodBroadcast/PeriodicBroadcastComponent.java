@@ -8,13 +8,13 @@
 
 package net.primegames.core.component.periodBroadcast;
 
+import cn.nukkit.Player;
+import cn.nukkit.scheduler.Task;
+import cn.nukkit.utils.TextFormat;
 import net.primegames.core.CorePlayer;
 import net.primegames.core.component.Component;
 import net.primegames.core.component.ComponentIds;
 import net.primegames.core.plugin.CorePlugin;
-import org.cloudburstmc.server.player.Player;
-import org.cloudburstmc.server.scheduler.Task;
-import org.cloudburstmc.server.utils.TextFormat;
 
 import java.util.ArrayList;
 import java.util.Map;

@@ -1,8 +1,8 @@
 package net.primegames.kitpvp.settings;
 
-import com.nukkitx.math.vector.Vector3f;
+import cn.nukkit.level.Level;
+import cn.nukkit.math.Vector3;
 import net.primegames.kitpvp.Kitpvp;
-import org.cloudburstmc.server.level.Level;
 
 public abstract class Settings {
 
@@ -19,10 +19,9 @@ public abstract class Settings {
 
     }
 
-    private Level loadLevel(String $levelName, Vector3f vector3){
-        plugin.getServer().loadLevel().id($levelName)
-                .load();
-        Level level = plugin.getServer().getLevel($levelName);
+    private Level loadLevel(String $levelName, Vector3 vector3){
+        plugin.getServer().loadLevel($levelName);
+        Level level = plugin.getServer().getLevelByName($levelName);
         if(level == null){
             throw new RuntimeException("Required world " + $levelName +  " was not found in the worlds folder.");
         }
@@ -32,6 +31,6 @@ public abstract class Settings {
 
     abstract protected String getDefaultWorldName();
 
-    abstract protected Vector3f getSpawnPoint();
+    abstract protected Vector3 getSpawnPoint();
 
 }

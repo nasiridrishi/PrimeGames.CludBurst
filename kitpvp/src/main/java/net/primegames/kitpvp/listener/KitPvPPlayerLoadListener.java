@@ -8,12 +8,13 @@
 
 package net.primegames.kitpvp.listener;
 
+import cn.nukkit.event.EventHandler;
+import cn.nukkit.event.Listener;
 import net.primegames.core.event.player.CorePlayerLoadedEvent;
-import org.cloudburstmc.server.event.Listener;
 
-public class KitPvPPlayerLoadListener {
+public class KitPvPPlayerLoadListener implements Listener {
 
-    @Listener
+    @EventHandler
     public void onCorePlayerLoaded(CorePlayerLoadedEvent event){
     }
 }

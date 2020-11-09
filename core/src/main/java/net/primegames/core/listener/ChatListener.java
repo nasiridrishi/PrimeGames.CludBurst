@@ -8,14 +8,15 @@
 
 package net.primegames.core.listener;
 
+import cn.nukkit.event.EventHandler;
+import cn.nukkit.event.Listener;
+import cn.nukkit.event.player.PlayerChatEvent;
 import net.primegames.core.CorePlayer;
-import org.cloudburstmc.server.event.Listener;
-import org.cloudburstmc.server.event.player.PlayerChatEvent;
 
 
-public class ChatListener {
+public class ChatListener implements Listener {
 
-    @Listener
+    @EventHandler
     public void onChat(PlayerChatEvent event){
         CorePlayer player = CorePlayer.cast(event.getPlayer());
         player.getChat().onText(player, event.getMessage());

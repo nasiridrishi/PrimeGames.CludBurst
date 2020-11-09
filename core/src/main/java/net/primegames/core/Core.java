@@ -1,5 +1,10 @@
 package net.primegames.core;
 
+import cn.nukkit.Server;
+import cn.nukkit.command.Command;
+import cn.nukkit.command.PluginCommand;
+import cn.nukkit.command.SimpleCommandMap;
+import cn.nukkit.scheduler.Task;
 import com.google.common.base.Preconditions;
 import net.primegames.core.Utils.LoggerUtils;
 import net.primegames.core.chat.ChatFactory;
@@ -14,23 +19,12 @@ import net.primegames.core.listener.PlayerLoadedListener;
 import net.primegames.core.plugin.CorePlugin;
 import net.primegames.core.providor.MySQLProvider;
 import net.primegames.core.providor.task.MySQLInitialCoreTask;
-import org.cloudburstmc.server.Server;
-import org.cloudburstmc.server.command.Command;
-import org.cloudburstmc.server.command.PluginCommand;
-import org.cloudburstmc.server.registry.CommandRegistry;
-import org.cloudburstmc.server.scheduler.Task;
-import org.slf4j.Logger;
 
-import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Map;
 
 public class Core {
-    private final Logger logger;
-    private final CorePlugin corePlugin;
-    private final Path dataFolder;
-    private final Server server;
 
 
     private static Core instance = null;
@@ -39,12 +33,11 @@ public class Core {
     private final GroupManager groupManager;
     private final ArrayList<String> ignoreList = new ArrayList<>(Arrays.asList("stop", "help", "list", "plugins", "whitelist", "gamemode"));
 
+    private CorePlugin plugin;
 
-    public Core(CorePlugin corePlugin, Logger logger, Path dataFolder, Server server) {
-        this.logger = logger;
-        this.corePlugin = corePlugin;
-        this.dataFolder = dataFolder;
-        this.server = server;
+
+    public Core(CorePlugin plugin) {
+        this.plugin = plugin;
         Preconditions.checkState(instance == null, "Instance already set!");
         instance = this;
         mySQLProvider = new MySQLProvider();
@@ -63,7 +56,7 @@ public class Core {
 
     public void onStartup() {
         registerListeners();
-        server.getScheduler().scheduleDelayedTask(new Task() {
+        plugin.getServer().getScheduler().scheduleDelayedTask(new Task() {
             @Override
             public void onRun(int currentTick) {
                 mySQLProvider.scheduleTask(new MySQLInitialCoreTask());
@@ -72,10 +65,10 @@ public class Core {
     }
 
     private void registerCoreCommands() {
-        CommandRegistry registry = server.getCommandRegistry();
-        registry.register(corePlugin, new KickCommand());
-        registry.register(corePlugin, new BanCommand());
-        registry.register(corePlugin, new MuteCommand());
+        SimpleCommandMap registry = plugin.getServer().getCommandMap();
+        registry.register("Core", new KickCommand());
+        registry.register("Core", new BanCommand());
+        registry.register("Core", new MuteCommand());
     }
 
     public KitFactory getKitFactory() {
@@ -91,7 +84,7 @@ public class Core {
     }
 
     public void unregisterDefaultCommands() {
-        Map<String, Command> commandEntries = server.getCommandRegistry().getRegisteredCommands();
+        Map<String, Command> commandEntries = plugin.getServer().getCommandMap().getCommands();
         ArrayList<Command> commands = new ArrayList<>();
         for (Map.Entry<String, Command> commandEntry : commandEntries.entrySet()) {
             if (!(commandEntry.getValue() instanceof PluginCommand)) {
@@ -100,7 +93,7 @@ public class Core {
         }
         for (Command command : commands) {
             if(!ignoreList.contains(command.getName())){
-                server.getCommandRegistry().unregister(corePlugin, command.getName());
+                command.unregister(plugin.getServer().getCommandMap());
             }
         }
         LoggerUtils.info("Unregistered default server commands");
@@ -110,25 +103,17 @@ public class Core {
         return instance;
     }
 
+    public CorePlugin getPlugin() {
+        return plugin;
+    }
+
+    public Server getServer(){
+        return plugin.getServer();
+    }
+
     protected void registerListeners() {
-        corePlugin.getEventManager().registerListeners(corePlugin, new ChatListener());
-        corePlugin.getEventManager().registerListeners(corePlugin, new CustomCorePlayerListener());
-        corePlugin.getEventManager().registerListeners(corePlugin, new PlayerLoadedListener());
-    }
-
-    public Server getServer() {
-        return server;
-    }
-
-    public Logger getLogger() {
-        return logger;
-    }
-
-    public CorePlugin getCorePlugin() {
-        return corePlugin;
-    }
-
-    public Path getDataFolder() {
-        return dataFolder;
+        plugin.getServer().getPluginManager().registerEvents(new ChatListener(), plugin);
+        plugin.getServer().getPluginManager().registerEvents(new CustomCorePlayerListener(),  plugin);
+        plugin.getServer().getPluginManager().registerEvents(new PlayerLoadedListener(), plugin);
     }
 }

@@ -8,13 +8,12 @@
 
 package net.primegames.core.providor.task.player.punishment;
 
+import cn.nukkit.Player;
+import cn.nukkit.Server;
+import cn.nukkit.utils.TextFormat;
 import net.primegames.core.CorePlayer;
 import net.primegames.core.Utils.LoggerUtils;
 import net.primegames.core.providor.MySQLPostQueryTask;
-import org.cloudburstmc.server.Server;
-import org.cloudburstmc.server.player.Player;
-import org.cloudburstmc.server.utils.TextFormat;
-import org.sql2o.converters.ConverterException;
 
 import java.sql.Connection;
 import java.sql.Date;

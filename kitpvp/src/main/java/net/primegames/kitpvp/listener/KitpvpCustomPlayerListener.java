@@ -1,15 +1,14 @@
 package net.primegames.kitpvp.listener;
 
-import net.primegames.core.Utils.LoggerUtils;
-import net.primegames.kitpvp.Kitpvp;
+import cn.nukkit.event.EventHandler;
+import cn.nukkit.event.EventPriority;
+import cn.nukkit.event.Listener;
+import cn.nukkit.event.player.PlayerCreationEvent;
 import net.primegames.kitpvp.KitpvpPlayer;
-import org.cloudburstmc.server.event.EventPriority;
-import org.cloudburstmc.server.event.Listener;
-import org.cloudburstmc.server.event.player.PlayerCreationEvent;
 
-public class KitpvpCustomPlayerListener{
+public class KitpvpCustomPlayerListener implements Listener {
 
-    @Listener(priority = EventPriority.HIGHEST)
+    @EventHandler(priority = EventPriority.HIGHEST)
     public void onCreation(PlayerCreationEvent event){
         event.setPlayerClass(KitpvpPlayer.class);
     }

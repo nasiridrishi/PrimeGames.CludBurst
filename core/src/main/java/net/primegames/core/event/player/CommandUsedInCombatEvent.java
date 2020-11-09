@@ -8,8 +8,8 @@
 
 package net.primegames.core.event.player;
 
+import cn.nukkit.event.Cancellable;
 import net.primegames.core.CorePlayer;
-import org.cloudburstmc.server.event.Cancellable;
 
 public class CommandUsedInCombatEvent extends CorePlayerEvent{
 

@@ -30,7 +30,7 @@ final public class PlayerRegisterTask extends MySQLPostQueryTask {
     private CorePlayer player;
 
     public PlayerRegisterTask(CorePlayer player){
-        uuid = player.getServerId();
+        uuid = player.getUniqueId();
         userName = player.getName();
         address = player.getAddress();
         this.player = player;
@@ -64,7 +64,7 @@ final public class PlayerRegisterTask extends MySQLPostQueryTask {
                     0,
                     "??"
                     ));
-            Core.getInstance().getServer().getEventManager().fire(new CorePlayerRegisteredEvent(player));
+            Core.getInstance().getServer().getPluginManager().callEvent(new CorePlayerRegisteredEvent(player));
             LoggerUtils.debug("new registration successful for " + player.getName());
             player.setStatus(player.STATUS_ONLINE);
         }

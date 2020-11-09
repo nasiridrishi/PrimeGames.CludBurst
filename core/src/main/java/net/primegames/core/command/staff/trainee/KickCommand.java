@@ -8,22 +8,23 @@
 
 package net.primegames.core.command.staff.trainee;
 
+import cn.nukkit.Player;
+import cn.nukkit.Server;
+import cn.nukkit.command.CommandSender;
+import cn.nukkit.command.ConsoleCommandSender;
+import cn.nukkit.utils.TextFormat;
 import net.primegames.core.CorePlayer;
 import net.primegames.core.command.CoreCommand;
 import net.primegames.core.group.Permissions;
-import org.cloudburstmc.server.Server;
-import org.cloudburstmc.server.command.CommandSender;
-import org.cloudburstmc.server.command.ConsoleCommandSender;
-import org.cloudburstmc.server.command.data.CommandData;
-import org.cloudburstmc.server.player.Player;
-import org.cloudburstmc.server.utils.TextFormat;
+import net.primegames.core.plugin.CorePlugin;
 
 import java.util.Arrays;
 
 public class KickCommand extends CoreCommand{
 
+
     public KickCommand() {
-        super(CommandData.builder("kick").build());
+        super("kick", CorePlugin.getInstance());
     }
 
     @Override

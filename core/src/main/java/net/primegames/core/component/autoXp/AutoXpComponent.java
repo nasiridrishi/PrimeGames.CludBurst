@@ -15,7 +15,7 @@ import net.primegames.core.plugin.CorePlugin;
 public class AutoXpComponent implements Component {
 
     public AutoXpComponent(CorePlugin plugin){
-        plugin.getEventManager().registerListeners(plugin, new autoXPListener());
+        plugin.getServer().getPluginManager().registerEvents(new autoXPListener(), plugin);
     }
 
     @Override

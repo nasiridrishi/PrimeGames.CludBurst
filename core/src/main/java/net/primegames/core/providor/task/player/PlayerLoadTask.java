@@ -30,7 +30,7 @@ final public class PlayerLoadTask extends MySqlFetchQueryTask {
 
     public PlayerLoadTask(CorePlayer player){
         LoggerUtils.debug("Initiating data load task for " + player.getName() + " from MySQL");
-        uuid = player.getServerId();
+        uuid = player.getUniqueId();
         this.player = player;
     }
 
@@ -81,7 +81,7 @@ final public class PlayerLoadTask extends MySqlFetchQueryTask {
                 }
                 if(playerDatabaseData != null){
                     player.setDatabaseData(playerDatabaseData);
-                    Core.getInstance().getServer().getEventManager().fire(new CorePlayerLoadedEvent(player));
+                    Core.getInstance().getServer().getPluginManager().callEvent(new CorePlayerLoadedEvent(player));
                     LoggerUtils.debug("Successfully loaded data from " + player.getName());
                     player.setStatus(player.STATUS_ONLINE);
                 }

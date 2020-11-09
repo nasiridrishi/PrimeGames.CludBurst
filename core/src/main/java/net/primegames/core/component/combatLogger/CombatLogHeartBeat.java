@@ -11,7 +11,6 @@ package net.primegames.core.component.combatLogger;
 import net.primegames.core.CorePlayer;
 import net.primegames.core.Utils.HeartBeat;
 import net.primegames.core.Utils.Utils;
-import org.cloudburstmc.server.utils.TextFormat;
 
 import java.util.HashMap;
 import java.util.Map;

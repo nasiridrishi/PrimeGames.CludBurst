@@ -8,7 +8,7 @@
 
 package net.primegames.core.event;
 
-import org.cloudburstmc.server.event.Event;
+import cn.nukkit.event.Event;
 
 public class CoreEvent extends Event {
 }

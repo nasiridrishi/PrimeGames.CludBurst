@@ -27,7 +27,7 @@ public class Group {
 
     private String tagFormat;
 
-    private ArrayList<String> permissions = new ArrayList<String>();
+    private final ArrayList<String> permissions = new ArrayList<>();
 
     public Group(int priorityLevel, String name, int identifier, String chatFormat, String tagFormat, ArrayList<String> permissions){
         this.priorityLevel = priorityLevel;

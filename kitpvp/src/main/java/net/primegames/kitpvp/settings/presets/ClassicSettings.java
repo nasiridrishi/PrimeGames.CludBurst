@@ -8,7 +8,7 @@
 
 package net.primegames.kitpvp.settings.presets;
 
-import com.nukkitx.math.vector.Vector3f;
+import cn.nukkit.math.Vector3;
 import net.primegames.kitpvp.settings.Settings;
 
 public class ClassicSettings extends Settings {
@@ -18,7 +18,7 @@ public class ClassicSettings extends Settings {
     }
 
     @Override
-    protected Vector3f getSpawnPoint() {
-        return Vector3f.from(-18.5, 108, -11.5);
+    protected Vector3 getSpawnPoint() {
+        return new Vector3(-18.5, 108, -11.5);
     }
 }

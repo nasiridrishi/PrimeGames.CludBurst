@@ -8,8 +8,8 @@
 
 package net.primegames.core.Utils;
 
+import cn.nukkit.utils.TextFormat;
 import net.primegames.core.CorePlayer;
-import org.cloudburstmc.server.utils.TextFormat;
 
 public class ChatUtils {
 

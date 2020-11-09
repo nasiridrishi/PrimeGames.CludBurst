@@ -26,7 +26,7 @@ public class KitPvPPlayerLoadTask extends MySqlFetchQueryTask {
 
     public KitPvPPlayerLoadTask(KitpvpPlayer player){
         this.player = player;
-        uuid = player.getServerId();
+        uuid = player.getUniqueId();
     }
 
     @Override

@@ -8,14 +8,15 @@
 
 package net.primegames.core.listener;
 
+import cn.nukkit.event.EventHandler;
+import cn.nukkit.event.Listener;
 import net.primegames.core.Core;
 import net.primegames.core.event.player.CorePlayerLoadedEvent;
 import net.primegames.core.providor.task.player.punishment.MySQLCheckPlayerPunishmentTask;
-import org.cloudburstmc.server.event.Listener;
 
-public class PlayerLoadedListener{
+public class PlayerLoadedListener implements Listener {
 
-    @Listener
+    @EventHandler
     public void onLoaded(CorePlayerLoadedEvent event){
         Core.getInstance().getMySQLProvider().scheduleTask(new MySQLCheckPlayerPunishmentTask(event.getPlayer()));
     }

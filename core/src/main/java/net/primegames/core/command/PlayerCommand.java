@@ -8,16 +8,17 @@
 
 package net.primegames.core.command;
 
+import cn.nukkit.Player;
+import cn.nukkit.command.CommandSender;
+import cn.nukkit.utils.TextFormat;
 import net.primegames.core.CorePlayer;
-import org.cloudburstmc.server.command.CommandSender;
-import org.cloudburstmc.server.command.data.CommandData;
-import org.cloudburstmc.server.player.Player;
-import org.cloudburstmc.server.utils.TextFormat;
+import net.primegames.core.plugin.CorePlugin;
 
 public abstract class PlayerCommand extends CoreCommand{
 
-    public PlayerCommand(CommandData data) {
-        super(data);
+
+    public PlayerCommand(String name, CorePlugin owner) {
+        super(name, owner);
     }
 
     @Override

@@ -8,20 +8,18 @@
 
 package net.primegames.core.group;
 
-import net.primegames.core.Core;
 import net.primegames.core.Utils.LoggerUtils;
-import org.cloudburstmc.server.player.Player;
-import org.cloudburstmc.server.utils.TextFormat;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.Objects;
 
 public class GroupManager {
 
-    private ArrayList<Group> groups = new ArrayList<>();
+    private final ArrayList<Group> groups = new ArrayList<>();
 
     private Class<? extends Group> groupClass = Group.class;
 
@@ -496,13 +494,13 @@ public class GroupManager {
                 "kit.iris",
                 "command.chat")));
 
-        addGroup(100, "LOS", GroupIds.LOS, "{BOLD}{RED}{clan_rank}{DARK_AQUA}{clan}{WHITE}[{GREEN}{group}{WHITE}]{GREEN} {player}{GOLD}: {GREEN}{message}", "•{RED}{clan_rank}{DARK_AQUA}{clan}{clan_ln}{WHITE}[{GREEN}{group}{WHITE}]{LIGHT_PURPLE}{player}", new ArrayList<>(Arrays.asList("*")));
+        addGroup(100, "LOS", GroupIds.LOS, "{BOLD}{RED}{clan_rank}{DARK_AQUA}{clan}{WHITE}[{GREEN}{group}{WHITE}]{GREEN} {player}{GOLD}: {GREEN}{message}", "•{RED}{clan_rank}{DARK_AQUA}{clan}{clan_ln}{WHITE}[{GREEN}{group}{WHITE}]{LIGHT_PURPLE}{player}", new ArrayList<>(Collections.singletonList("*")));
 
-        addGroup(101, "Chief", GroupIds.CHIEF, "{BOLD}{RED}{clan_rank}{DARK_AQUA}{clan}{WHITE}[{GREEN}{group}{WHITE}]{DARK_PURPLE} {player}{GOLD}: {GREEN}{message}", "•{RED}{clan_rank}{DARK_AQUA}{clan}{clan_ln}{WHITE}[{GREEN}{group}{WHITE}]{DARK_PURPLE}{player}", new ArrayList<>(Arrays.asList("*")));
+        addGroup(101, "Chief", GroupIds.CHIEF, "{BOLD}{RED}{clan_rank}{DARK_AQUA}{clan}{WHITE}[{GREEN}{group}{WHITE}]{DARK_PURPLE} {player}{GOLD}: {GREEN}{message}", "•{RED}{clan_rank}{DARK_AQUA}{clan}{clan_ln}{WHITE}[{GREEN}{group}{WHITE}]{DARK_PURPLE}{player}", new ArrayList<>(Collections.singletonList("*")));
 
-        addGroup(102, "Developer", GroupIds.DEV, "{BOLD}{RED}{clan_rank}{DARK_AQUA}{clan}{WHITE}[{DARK_RED}{group}{WHITE}]{RED} {player}{WHITE}: {DARK_PURPLE}{message}", "•{RED}{clan_rank}{DARK_AQUA}{clan}{clan_ln}{WHITE}[{GREEN}{group}{WHITE}]{DARK_PURPLE}{player}", new ArrayList<>(Arrays.asList("*")));
+        addGroup(102, "Developer", GroupIds.DEV, "{BOLD}{RED}{clan_rank}{DARK_AQUA}{clan}{WHITE}[{DARK_RED}{group}{WHITE}]{RED} {player}{WHITE}: {DARK_PURPLE}{message}", "•{RED}{clan_rank}{DARK_AQUA}{clan}{clan_ln}{WHITE}[{GREEN}{group}{WHITE}]{DARK_PURPLE}{player}", new ArrayList<>(Collections.singletonList("*")));
 
-        addGroup(103, "Owner", GroupIds.OWNER, "{BOLD}{RED}{clan_rank}{DARK_AQUA}{clan}{WHITE}[{BLUE}{group}{WHITE}]{DARK_AQUA} {player}{YELLOW}: {AQUA}{message}", "•{RED}{clan_rank}{DARK_AQUA}{clan}{clan_ln}{WHITE}[{BOLD}{BLUE}{group}{WHITE}]{DARK_AQUA}{player}", new ArrayList<>(Arrays.asList("*")));
+        addGroup(103, "Owner", GroupIds.OWNER, "{BOLD}{RED}{clan_rank}{DARK_AQUA}{clan}{WHITE}[{BLUE}{group}{WHITE}]{DARK_AQUA} {player}{YELLOW}: {AQUA}{message}", "•{RED}{clan_rank}{DARK_AQUA}{clan}{clan_ln}{WHITE}[{BOLD}{BLUE}{group}{WHITE}]{DARK_AQUA}{player}", new ArrayList<>(Collections.singletonList("*")));
 
     }
 }

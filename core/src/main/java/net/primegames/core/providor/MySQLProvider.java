@@ -24,7 +24,7 @@ public class MySQLProvider{
     }
 
     public void scheduleTask(MySqlTask mySqlTask) {
-        Core.getInstance().getServer().getScheduler().scheduleAsyncTask(Core.getInstance().getCorePlugin(), mySqlTask);
+        Core.getInstance().getServer().getScheduler().scheduleAsyncTask(Core.getInstance().getPlugin(), mySqlTask);
     }
 
     public Connection getConnection(){

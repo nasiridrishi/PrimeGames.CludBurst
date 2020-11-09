@@ -1,2 +1,4 @@
-package net.primegames.core.command;public class StopCommand {
+package net.primegames.core.command;
+
+public class StopCommand {
 }

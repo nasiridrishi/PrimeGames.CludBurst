@@ -8,10 +8,6 @@
 
 package net.primegames.core.command.staff.admin;
 
-import net.primegames.core.command.CoreCommand;
-import org.cloudburstmc.server.command.CommandSender;
-import org.cloudburstmc.server.command.data.CommandData;
-
 public class SuperBanCommand  {
     //todo
 }

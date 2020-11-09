@@ -5,6 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>net.primegames</groupId>
     <artifactId>core</artifactId>
+    <packaging>pom</packaging>
     <version>0.0.1-SNAPSHOT</version>
     <build>
         <finalName>${project.name}-${project.version}</finalName>
@@ -43,15 +44,15 @@
     </repositories>
     <dependencies>
         <dependency>
-            <groupId>org.cloudburstmc</groupId>
-            <artifactId>cloudburst-server</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
+            <groupId>cn.nukkit</groupId>
+            <artifactId>nukkit</artifactId>
+            <version>1.0-SNAPSHOT</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
         <groupId>com.github.nasiridrishi</groupId>
         <artifactId>ScoreboardAPI</artifactId>
-        <version>48eec4ed9c</version>
+        <version>b8575f687f</version>
         </dependency>
         <dependency>
             <groupId>org.apache.maven.plugins</groupId>

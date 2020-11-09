@@ -22,10 +22,10 @@
       <sourceFolder url="file://$MODULE_DIR$/resources" type="java-resource" />
       <excludeFolder url="file://$MODULE_DIR$/target" />
     </content>
-    <orderEntry type="inheritedJdk" />
+    <orderEntry type="jdk" jdkName="1.8" jdkType="JavaSDK" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" scope="PROVIDED" name="Maven: org.cloudburstmc:cloudburst-server:0.0.1-SNAPSHOT" level="project" />
-    <orderEntry type="library" name="Maven: com.github.nasiridrishi:ScoreboardAPI:48eec4ed9c" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: cn.nukkit:nukkit:1.0-SNAPSHOT" level="project" />
+    <orderEntry type="library" name="Maven: com.github.nasiridrishi:ScoreboardAPI:b8575f687f" level="project" />
     <orderEntry type="library" name="Maven: org.apache.maven.plugins:maven-deploy-plugin:maven-plugin:2.7" level="project" />
     <orderEntry type="library" name="Maven: org.apache.maven:maven-plugin-api:2.0.6" level="project" />
     <orderEntry type="library" name="Maven: org.apache.maven:maven-project:2.0.6" level="project" />

@@ -8,9 +8,9 @@
 
 package net.primegames.core.providor;
 
+import cn.nukkit.Server;
+import cn.nukkit.scheduler.AsyncTask;
 import net.primegames.core.Core;
-import org.cloudburstmc.server.Server;
-import org.cloudburstmc.server.scheduler.AsyncTask;
 
 import java.sql.Connection;
 import java.util.UUID;

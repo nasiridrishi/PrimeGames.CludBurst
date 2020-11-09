@@ -8,9 +8,9 @@
 
 package net.primegames.core.providor;
 
+import cn.nukkit.utils.Config;
 import net.primegames.core.Core;
 import net.primegames.core.Utils.LoggerUtils;
-import org.cloudburstmc.server.utils.Config;
 
 import java.sql.*;
 
@@ -19,7 +19,7 @@ public class MySqlConnectionBuilder{
     private Connection connection;
 
     public MySqlConnectionBuilder(){
-        open(Core.getInstance().getCorePlugin().getDefaultConfig());
+        open(Core.getInstance().getPlugin().getConfig());
     }
 
     protected void open(Config config) {
@@ -30,10 +30,10 @@ public class MySqlConnectionBuilder{
             connection.setAutoCommit(true);
             LoggerUtils.info("Mysql Connection successfully established");
         } catch (SQLException ex) {
-            Core.getInstance().getLogger().error("Could not Establish connection with MySQL database");
+            LoggerUtils.error("Could not Establish connection with MySQL database");
             ex.printStackTrace();
         } catch (ClassNotFoundException ex) {
-            Core.getInstance().getLogger().error("MySQL Driver is missing.. Needs dblib");
+            LoggerUtils.error("MySQL Driver is missing.. Needs dblib");
             ex.printStackTrace();
         }
     }

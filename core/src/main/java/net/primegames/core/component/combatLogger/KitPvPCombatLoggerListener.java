@@ -8,23 +8,24 @@
 
 package net.primegames.core.component.combatLogger;
 
+import cn.nukkit.Player;
+import cn.nukkit.entity.Entity;
+import cn.nukkit.event.EventHandler;
+import cn.nukkit.event.Listener;
+import cn.nukkit.event.entity.EntityDamageByEntityEvent;
+import cn.nukkit.event.player.PlayerCommandPreprocessEvent;
+import cn.nukkit.event.player.PlayerDeathEvent;
+import cn.nukkit.event.player.PlayerInteractEvent;
+import cn.nukkit.event.player.PlayerQuitEvent;
+import net.primegames.core.Core;
 import net.primegames.core.CorePlayer;
 import net.primegames.core.event.player.CommandUsedInCombatEvent;
 import net.primegames.core.event.player.InteractedInCombatEvent;
 import net.primegames.core.event.player.LoggedOutInCombatEvent;
-import org.cloudburstmc.server.entity.Entity;
-import org.cloudburstmc.server.event.EventPriority;
-import org.cloudburstmc.server.event.Listener;
-import org.cloudburstmc.server.event.entity.EntityDamageByEntityEvent;
-import org.cloudburstmc.server.event.player.PlayerCommandPreprocessEvent;
-import org.cloudburstmc.server.event.player.PlayerDeathEvent;
-import org.cloudburstmc.server.event.player.PlayerInteractEvent;
-import org.cloudburstmc.server.event.player.PlayerQuitEvent;
-import org.cloudburstmc.server.player.Player;
 
-public class KitPvPCombatLoggerListener {
+public class KitPvPCombatLoggerListener implements Listener {
 
-    @Listener(priority = EventPriority.MONITOR)
+    @EventHandler
     public void onDamage(EntityDamageByEntityEvent event) {
             Entity victim = event.getEntity();
             Entity damager = event.getDamager();
@@ -34,15 +35,15 @@ public class KitPvPCombatLoggerListener {
             }
     }
 
-    @Listener
+    @EventHandler
     public void onQuit(PlayerQuitEvent event){
         CorePlayer player = CorePlayer.cast(event.getPlayer());
         if(CombatLogHeartBeat.getInstance().isTagged(player) && event.getReason().equals("Disconnected from Server")){
-            player.getServer().getEventManager().fire(new LoggedOutInCombatEvent(player));
+            Core.getInstance().getServer().getPluginManager().callEvent(new LoggedOutInCombatEvent(player));
         }
     }
 
-    @Listener
+    @EventHandler
     public void onDeath(PlayerDeathEvent event){
         CorePlayer player = CorePlayer.cast(event.getEntity().getPlayer());
         if(CombatLogHeartBeat.getInstance().isTagged(player)){
@@ -50,20 +51,20 @@ public class KitPvPCombatLoggerListener {
         }
     }
 
-    @Listener
+    @EventHandler
     public void onInteract(PlayerInteractEvent event){
         CorePlayer player = CorePlayer.cast(event.getPlayer());
         if(CombatLogHeartBeat.getInstance().isTagged(player)){
-            player.getServer().getEventManager().fire(new InteractedInCombatEvent(player, event));
+            Core.getInstance().getServer().getPluginManager().callEvent(new InteractedInCombatEvent(player, event));
         }
     }
 
-    @Listener
+    @EventHandler
     public void onCommand(PlayerCommandPreprocessEvent event){
         CorePlayer player = CorePlayer.cast(event.getPlayer());
         String command = event.getMessage().split(" ")[0].toLowerCase();
-        if(player.getServer().getCommandRegistry().getCommandList().contains(command)){
-            player.getServer().getEventManager().fire(new CommandUsedInCombatEvent(player, event));
+        if(player.getServer().getCommandMap().getCommands().containsKey(command)){
+            Core.getInstance().getServer().getPluginManager().callEvent(new CommandUsedInCombatEvent(player, event));
         }
     }
 }

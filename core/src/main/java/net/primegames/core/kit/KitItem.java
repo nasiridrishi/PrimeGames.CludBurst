@@ -8,19 +8,18 @@
 
 package net.primegames.core.kit;
 
-import org.cloudburstmc.server.item.behavior.Item;
-import org.cloudburstmc.server.item.enchantment.Enchantment;
-import org.cloudburstmc.server.utils.Identifier;
+import cn.nukkit.item.Item;
+import cn.nukkit.item.enchantment.Enchantment;
 
 public class KitItem {
 
-    private final Identifier itemId;
+    private final int itemId;
     private final int meta;
     private Enchantment[] enchantments;
     private final int count;
     private final Item preparedItem;
 
-    public KitItem(Identifier itemId, int meta, int count, Enchantment... enchantments){
+    public KitItem(int itemId, int meta, int count, Enchantment... enchantments){
         this.itemId = itemId;
         this.meta = meta;
         this.enchantments = enchantments;
@@ -28,7 +27,7 @@ public class KitItem {
         preparedItem = prepareEnchantedItem();
     }
 
-    public KitItem(Identifier itemId, int meta, int count){
+    public KitItem(int itemId, int meta, int count){
         this.itemId = itemId;
         this.meta = meta;
         this.count = count;

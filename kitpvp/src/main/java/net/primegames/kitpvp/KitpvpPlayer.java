@@ -1,17 +1,15 @@
 package net.primegames.kitpvp;
 
-import com.nukkitx.protocol.bedrock.BedrockServerSession;
-import lombok.Getter;
+import cn.nukkit.Player;
+import cn.nukkit.network.SourceInterface;
 import lombok.Setter;
 import net.primegames.core.CorePlayer;
-import net.primegames.core.Utils.CoreScoreBoard;
 import net.primegames.core.component.killtracker.tracker.HasKillTracker;
 import net.primegames.core.component.killtracker.tracker.KillTrackerDataStore;
 import net.primegames.core.economy.balance.Balance;
 import net.primegames.core.economy.balance.contract.BalanceHolder;
-import net.primegames.kitpvp.player.KitPvPScoreBoard;
-import org.cloudburstmc.server.player.Player;
-import org.cloudburstmc.server.utils.ClientChainData;
+
+import java.net.InetSocketAddress;
 
 public class KitpvpPlayer extends CorePlayer implements HasKillTracker, BalanceHolder {
 
@@ -19,10 +17,16 @@ public class KitpvpPlayer extends CorePlayer implements HasKillTracker, BalanceH
 
     @Setter private Balance balance;
 
-    public KitpvpPlayer(BedrockServerSession session, ClientChainData chainData) {
-        super(session, chainData);
-        killTracker = new KillTrackerDataStore(this);
+    public KitpvpPlayer(SourceInterface interfaz, Long clientID, InetSocketAddress socketAddress) {
+        super(interfaz, clientID, socketAddress);
     }
+
+
+//
+//    public KitpvpPlayer(BedrockServerSession session, ClientChainData chainData) {
+//        super(session, chainData);
+//        killTracker = new KillTrackerDataStore(this);
+//    }
 
     public static KitpvpPlayer cast(Player player){
         return (KitpvpPlayer)player;

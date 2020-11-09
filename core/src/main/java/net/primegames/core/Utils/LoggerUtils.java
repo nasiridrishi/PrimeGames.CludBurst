@@ -9,24 +9,22 @@
 package net.primegames.core.Utils;
 
 import net.primegames.core.Core;
-import org.cloudburstmc.server.Server;
-import org.cloudburstmc.server.utils.Utils;
 
 public class LoggerUtils {
 
     static public void info(String $msg){
-        Core.getInstance().getLogger().info($msg);
+        Core.getInstance().getPlugin().getLogger().info($msg);
     }
 
     static public void error(String $msg){
-        Core.getInstance().getLogger().error($msg);
+        Core.getInstance().getPlugin().getLogger().error($msg);
     }
 
     static public void warn(String $msg){
-        Core.getInstance().getLogger().warn($msg);
+        Core.getInstance().getPlugin().getLogger().warning($msg);
     }
 
     static public void debug(String $msg){
-        Core.getInstance().getLogger().debug($msg);
+        Core.getInstance().getPlugin().getLogger().debug($msg);
     }
 }

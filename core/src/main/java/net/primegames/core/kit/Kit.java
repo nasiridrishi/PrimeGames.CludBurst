@@ -8,13 +8,13 @@
 
 package net.primegames.core.kit;
 
-import org.cloudburstmc.server.item.behavior.Item;
-import org.cloudburstmc.server.item.behavior.ItemArmor;
-import org.cloudburstmc.server.item.behavior.ItemIds;
-import org.cloudburstmc.server.item.enchantment.Enchantment;
-import org.cloudburstmc.server.player.Player;
-import org.cloudburstmc.server.potion.Effect;
-import org.cloudburstmc.server.utils.Identifier;
+
+import cn.nukkit.Player;
+import cn.nukkit.item.Item;
+import cn.nukkit.item.ItemArmor;
+import cn.nukkit.item.ItemID;
+import cn.nukkit.item.enchantment.Enchantment;
+import cn.nukkit.potion.Effect;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -84,23 +84,23 @@ public abstract class Kit {
     }
 
     protected ArrayList<Item> getDiamondArmor() {
-        Map<Identifier, Integer> itemsIds = new HashMap<>();
-        itemsIds.put(ItemIds.DIAMOND_HELMET, 0);
-        itemsIds.put(ItemIds.DIAMOND_CHESTPLATE, 0);
-        itemsIds.put(ItemIds.DIAMOND_LEGGINGS, 0);
-        itemsIds.put(ItemIds.DIAMOND_BOOTS, 0);
+        Map<Integer, Integer> itemsIds = new HashMap<>();
+        itemsIds.put(ItemID.DIAMOND_HELMET, 0);
+        itemsIds.put(ItemID.DIAMOND_CHESTPLATE, 0);
+        itemsIds.put(ItemID.DIAMOND_LEGGINGS, 0);
+        itemsIds.put(ItemID.DIAMOND_BOOTS, 0);
         ArrayList<Item> items = new ArrayList<>();
-        for (Map.Entry<Identifier, Integer> item: itemsIds.entrySet()){
+        for (Map.Entry<Integer, Integer> item: itemsIds.entrySet()){
             items.add(Item.get(item.getKey(), item.getValue()));
         }
         return items;
     }
 
-    protected Item prepareKitItem(Identifier itemId, int meta, int amount, Enchantment... enchantments){
+    protected Item prepareKitItem(int itemId, int meta, int amount, Enchantment... enchantments){
         return (new KitItem( itemId, meta, amount,  enchantments)).getItem();
     }
 
-    protected Item prepareKitItem(Identifier itemId, int meta, int amount){
+    protected Item prepareKitItem(int itemId, int meta, int amount){
         return (new KitItem(itemId, meta, amount)).getItem();
     }
 }

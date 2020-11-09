@@ -8,22 +8,23 @@
 
 package net.primegames.core.component.autoXp;
 
-import org.cloudburstmc.server.entity.Entity;
-import org.cloudburstmc.server.event.Listener;
-import org.cloudburstmc.server.event.block.BlockBreakEvent;
-import org.cloudburstmc.server.event.entity.EntityDamageEvent;
-import org.cloudburstmc.server.event.player.PlayerDeathEvent;
-import org.cloudburstmc.server.player.Player;
+import cn.nukkit.Player;
+import cn.nukkit.entity.Entity;
+import cn.nukkit.event.EventHandler;
+import cn.nukkit.event.Listener;
+import cn.nukkit.event.block.BlockBreakEvent;
+import cn.nukkit.event.entity.EntityDamageEvent;
+import cn.nukkit.event.player.PlayerDeathEvent;
 
-public class autoXPListener {
+public class autoXPListener implements Listener {
 
-    @Listener
+    @EventHandler
     public void onBreak(BlockBreakEvent event){
         event.getPlayer().addExperience(event.getDropExp());
         event.setDropExp(0);
     }
 
-    @Listener
+    @EventHandler
     public void onDeath(PlayerDeathEvent event){
         Player player = event.getEntity().getPlayer();
         EntityDamageEvent damageEvent = player.getLastDamageCause();

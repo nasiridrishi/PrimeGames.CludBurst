@@ -15,7 +15,7 @@ import net.primegames.core.plugin.CorePlugin;
 public class AutoInvComponent implements Component {
 
     public AutoInvComponent(CorePlugin plugin){
-        plugin.getEventManager().registerListeners(plugin, new AutoInvListener());
+        plugin.getServer().getPluginManager().registerEvents(new AutoInvListener(), plugin);
     }
 
     @Override
