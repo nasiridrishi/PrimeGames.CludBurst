@@ -1,0 +1,9 @@
+name: PrimeGamesCore
+version: '${project.version}'
+main: net.primegames.Core
+api-version: 1.18
+prefix: PG
+load: STARTUP
+authors: [ nasir_idrishi ]
+description: Core Plugin for primegames
+website: https://primegames.net

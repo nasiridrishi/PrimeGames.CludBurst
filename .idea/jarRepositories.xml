@@ -12,6 +12,11 @@
       <option name="url" value="https://mvn.intellectualsites.com/content/repositories/releases/" />
     </remote-repository>
     <remote-repository>
+      <option name="id" value="org.async.jdbc" />
+      <option name="name" value="org.async.jdbc" />
+      <option name="url" value="$PROJECT_DIR$/libs" />
+    </remote-repository>
+    <remote-repository>
       <option name="id" value="nukkit-repo" />
       <option name="name" value="nukkit-repo" />
       <option name="url" value="https://repo.nukkitx.com/maven-snapshots" />
@@ -32,14 +37,14 @@
       <option name="url" value="https://repo.nukkitx.com/main/" />
     </remote-repository>
     <remote-repository>
+      <option name="id" value="sonatype" />
+      <option name="name" value="sonatype" />
+      <option name="url" value="https://oss.sonatype.org/content/groups/public/" />
+    </remote-repository>
+    <remote-repository>
       <option name="id" value="spring-snapshots" />
       <option name="name" value="spring-snapshots" />
       <option name="url" value="http://repo.spring.io/snapshot" />
-    </remote-repository>
-    <remote-repository>
-      <option name="id" value="org.async.jdbc" />
-      <option name="name" value="org.async.jdbc" />
-      <option name="url" value="file://$PROJECT_DIR$/core/src/libs" />
     </remote-repository>
     <remote-repository>
       <option name="id" value="central" />
@@ -49,7 +54,7 @@
     <remote-repository>
       <option name="id" value="org.async.jdbc" />
       <option name="name" value="org.async.jdbc" />
-      <option name="url" value="$PROJECT_DIR$/libs" />
+      <option name="url" value="file://$PROJECT_DIR$/core/libs" />
     </remote-repository>
     <remote-repository>
       <option name="id" value="spring-milestones" />
@@ -72,14 +77,19 @@
       <option name="url" value="http://lucgameshd.de:8081/content/repositories/releases" />
     </remote-repository>
     <remote-repository>
-      <option name="id" value="org.async.jdbc" />
-      <option name="name" value="org.async.jdbc" />
-      <option name="url" value="file://$PROJECT_DIR$/core/libs" />
+      <option name="id" value="papermc-repo" />
+      <option name="name" value="papermc-repo" />
+      <option name="url" value="https://papermc.io/repo/repository/maven-public/" />
     </remote-repository>
     <remote-repository>
       <option name="id" value="jboss.community" />
       <option name="name" value="JBoss Community repository" />
       <option name="url" value="https://repository.jboss.org/nexus/content/repositories/public/" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="org.async.jdbc" />
+      <option name="name" value="org.async.jdbc" />
+      <option name="url" value="file://$PROJECT_DIR$/core/src/libs" />
     </remote-repository>
   </component>
 </project>
